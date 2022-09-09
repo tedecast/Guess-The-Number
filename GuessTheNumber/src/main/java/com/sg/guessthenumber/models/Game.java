@@ -14,6 +14,7 @@ public class Game {
     private int id;
     private int roundNumber;
     private String winningNumbers; 
+    private boolean finished; 
 
     public int getId() {
         return id;
@@ -38,7 +39,12 @@ public class Game {
     public void setWinningNumbers(String winningNumbers) {
         this.winningNumbers = winningNumbers;
     }
-    
-    
-    
+
+    public boolean isFinished() {
+        return finished;
+    }
+
+    public void setFinished(boolean finished) {
+        this.finished = finished;
+    }   
 }
