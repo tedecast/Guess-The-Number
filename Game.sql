@@ -1,0 +1,9 @@
+CREATE DATABASE IF NOT EXISTS Game;
+
+USE Game; 
+
+CREATE TABLE Game(
+id INT PRIMARY KEY AUTO_INCREMENT,
+roundNumber int NOT NULL,
+winnningNumbers CHAR(4) NOT NULL
+);
