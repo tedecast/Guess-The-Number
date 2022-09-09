@@ -4,7 +4,7 @@ USE Rounds;
 
 CREATE TABLE Rounds(
 id INT PRIMARY KEY AUTO_INCREMENT,
-roundNumber int NOT NULL AUTO_INCREMENT,
+roundNumber int NOT NULL,
 guess CHAR(4) NOT NULL,
 p int NOT NULL, 
 e int NOT NULL 
