@@ -11,4 +11,43 @@ package com.sg.guessthenumber.models;
  */
 public class Round {
     
+    private int roundNumber;
+    private String guess;
+    private int partial;
+    private int exact;
+
+    public int getRoundNumber() {
+        return roundNumber;
+    }
+
+    public void setRoundNumber(int roundNumber) {
+        this.roundNumber = roundNumber;
+    }
+
+    public String getGuess() {
+        return guess;
+    }
+
+    public void setGuess(String guess) {
+        this.guess = guess;
+    }
+
+    public int getPartial() {
+        return partial;
+    }
+
+    public void setPartial(int partial) {
+        this.partial = partial;
+    }
+
+    public int getExact() {
+        return exact;
+    }
+
+    public void setExact(int exact) {
+        this.exact = exact;
+    }
+    
+    
+    
 }
