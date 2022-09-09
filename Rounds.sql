@@ -3,8 +3,7 @@ CREATE DATABASE IF NOT EXISTS Rounds;
 USE Rounds; 
 
 CREATE TABLE Rounds(
-id INT PRIMARY KEY AUTO_INCREMENT,
-roundNumber int NOT NULL,
+roundNumber int PRIMARY KEY AUTO_INCREMENT,
 guess CHAR(4) NOT NULL,
 p int NOT NULL, 
 e int NOT NULL 
