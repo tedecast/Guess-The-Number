@@ -15,3 +15,8 @@ roundNumber int NOT NULL,
 guess CHAR(4) NOT NULL,
 result VARCHAR(12) NOT NULL  
 );
+
+ALTER TABLE Round
+	ADD CONSTRAINT FK_RoundGame
+    FOREIGN KEY FK_RoundGame (GameID)
+    REFERENCES Game (GameID);   
