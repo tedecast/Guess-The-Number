@@ -12,7 +12,6 @@ package com.sg.guessthenumber.models;
 public class Game {
     
     private int id;
-    private int roundNumber;
     private String winningNumbers; 
     private boolean finished; 
 
@@ -22,14 +21,6 @@ public class Game {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getRoundNumber() {
-        return roundNumber;
-    }
-
-    public void setRoundNumber(int roundNumber) {
-        this.roundNumber = roundNumber;
     }
 
     public String getWinningNumbers() {

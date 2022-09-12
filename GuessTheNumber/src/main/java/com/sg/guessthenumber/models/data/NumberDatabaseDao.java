@@ -94,8 +94,6 @@ public class NumberDatabaseDao implements NumberDao {
             Round round = new Round();
             round.setRoundNumber(rs.getInt("roundNumber"));
             round.setGuess(rs.getString("guess"));
-            round.setPartial(rs.getInt("partial"));
-            round.setExact(rs.getInt("exact"));
             return round;
 
         }

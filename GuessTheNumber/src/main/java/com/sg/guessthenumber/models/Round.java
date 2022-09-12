@@ -11,14 +11,22 @@ package com.sg.guessthenumber.models;
  */
 public class Round {
     
+    private int roundID;
     private int roundNumber;
     private String guess;
-    private int partial;
-    private int exact;
+    private String results;
     
     public Round() {
     }
 
+    public int getRoundID() {
+        return roundID;
+    }
+    
+    // may not need setter
+    public void setRoundID(int roundID) {
+        this.roundID = roundID;
+    }
 
     public int getRoundNumber() {
         return roundNumber;
@@ -36,22 +44,15 @@ public class Round {
         this.guess = guess;
     }
 
-    public int getPartial() {
-        return partial;
+    public String getResults() {
+        return results;
     }
 
-    public void setPartial(int partial) {
-        this.partial = partial;
+    public void setResults(String results) {
+        this.results = results;
     }
 
-    public int getExact() {
-        return exact;
-    }
 
-    public void setExact(int exact) {
-        this.exact = exact;
-    }
-    
     
     
 }
