@@ -7,6 +7,7 @@ roundID int PRIMARY KEY AUTO_INCREMENT,
 gameID int NOT NULL,
 roundNumber int NOT NULL, 
 guess CHAR(4) NOT NULL,
-results VARCHAR(12) NOT NULL  
+result VARCHAR(12) NOT NULL  
 );
+
 

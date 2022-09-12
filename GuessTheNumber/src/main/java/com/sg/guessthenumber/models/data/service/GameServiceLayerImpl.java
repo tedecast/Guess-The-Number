@@ -65,6 +65,8 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         
         String answer = this.dao.getGameByID(round.getGame().getGameID()).getWinningNumbers();
         String guess = round.getGuess();
+        String result = this.getResult(guess, answer);
+        round.setResults(result);
         
         Game game = this.getGamesByID(round.getGame().getGameID());
         if (guess.equalsIgnoreCase(answer)) {  
@@ -87,6 +89,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         
         for (int i = 0; i < guessChar.length; i++){
             
+            // index starts at 0, meaning it's exact. 
             if (answer.indexOf(guessChar[i]) > -1) {
                 if(guessChar[i] == answerChar[i]) {
                     exact++;
@@ -95,7 +98,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
                 }
             }       
         }
-        String result = "e: " + exact + " p:" + partial;
+        String result = "e: " + exact + " p: " + partial;
         return result;  
     }
 

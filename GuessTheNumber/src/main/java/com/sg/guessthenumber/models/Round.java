@@ -15,7 +15,7 @@ public class Round {
     private Game game;
     private int roundNumber;
     private String guess;
-    private String results;
+    private String result;
     
     public Round() {
     }
@@ -53,12 +53,12 @@ public class Round {
         this.guess = guess;
     }
 
-    public String getResults() {
-        return results;
+    public String getResult() {
+        return result;
     }
 
-    public void setResults(String results) {
-        this.results = results;
+    public void setResult(String result) {
+        this.result = result;
     }
 
 

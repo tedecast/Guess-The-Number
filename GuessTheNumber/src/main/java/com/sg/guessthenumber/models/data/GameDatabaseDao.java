@@ -136,7 +136,7 @@ public class GameDatabaseDao implements GameDao {
             round.getGame().setGameID(rs.getInt("gameid"));
             round.setRoundNumber(rs.getInt("roundNumber"));
             round.setGuess(rs.getString("guess"));
-            round.setResults(rs.getString("results"));
+            round.setResult(rs.getString("result"));
             return round;
 
         }
