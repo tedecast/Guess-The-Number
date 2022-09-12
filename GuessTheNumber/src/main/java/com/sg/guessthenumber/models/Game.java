@@ -18,6 +18,11 @@ public class Game {
     public Game() {
     }
     
+    public Game(String winningNumbers, String progress){
+        this.winningNumbers = winningNumbers;
+        this.progress = progress;
+    }
+    
     public Game(int gameID) {
         this.gameID = gameID;
     }

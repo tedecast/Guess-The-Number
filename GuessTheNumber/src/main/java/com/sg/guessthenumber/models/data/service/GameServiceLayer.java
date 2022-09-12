@@ -21,7 +21,7 @@ public interface GameServiceLayer {
     
     public Round makeGuess(Round guess);
     
-    public String getResult(String guess, String answer);
+    public String getRoundResult(String guess, String answer);
     
     public List<Game> getAllGames();
     

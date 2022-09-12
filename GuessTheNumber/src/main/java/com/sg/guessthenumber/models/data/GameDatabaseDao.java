@@ -14,10 +14,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -26,14 +28,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GameDatabaseDao implements GameDao {
 
-    private final JdbcTemplate jdbcTemplate;
-    
     @Autowired
-    public GameDatabaseDao(JdbcTemplate jdbcTemplate){
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    private JdbcTemplate jdbcTemplate;
     
     @Override
+    @Transactional 
     public Game addGame(Game game) {
         
         final String sql = "INSERT INTO game(winningNumbers) VALUES(?);";
@@ -64,10 +63,12 @@ public class GameDatabaseDao implements GameDao {
     @Override
     public Game getGameByID(int gameID) {
         
-        final String sql = "SELECT * "
-                + "FROM game WHERE gameID = ?;";
-        
+        try {
+        final String sql = "SELECT * FROM game WHERE gameID = ?;";
         return this.jdbcTemplate.queryForObject(sql, new GameMapper(), gameID);
+        } catch (DataAccessException ex){
+            return null;
+        }
     }
     
     @Override
@@ -80,13 +81,13 @@ public class GameDatabaseDao implements GameDao {
     @Override
     public Round getRoundByID(int roundID) {
         
-        final String sql = "SELECT * "
-                + "FROM round WHERE roundID = ?;";
+        final String sql = "SELECT * FROM round WHERE roundID = ?;";
         
         return this.jdbcTemplate.queryForObject(sql, new RoundMapper(), roundID);
     }
     
     @Override
+    @Transactional
     public Round addRound(Round round) {
                 
         final String sql = "INSERT INTO round(gameid, guess, result) VALUES(?,?,?);";
@@ -110,8 +111,7 @@ public class GameDatabaseDao implements GameDao {
 
     @Override
     public List<Round> getAllRoundsByID(int gameID) {
-        final String sql = "SELECT * from round "
-                + "WHERE gameID = ?";
+        final String sql = "SELECT * from round WHERE gameID = ?";
         return this.jdbcTemplate.query(sql, new RoundMapper(), gameID);
     }
 
@@ -128,13 +128,13 @@ public class GameDatabaseDao implements GameDao {
         }
     }
 
-        private static final class RoundMapper implements RowMapper<Round> {
+    private static final class RoundMapper implements RowMapper<Round> {
 
         @Override
         public Round mapRow(ResultSet rs, int index) throws SQLException {
             Round round = new Round();
-            round.setRoundID(index);
-            round.getGame().setGameID(rs.getInt("gameid"));
+            round.setRoundID(rs.getInt("roundid"));
+            round.setGameID(rs.getInt("gameid"));
             round.setRoundNumber(rs.getInt("roundNumber"));
             round.setGuess(rs.getString("guess"));
             round.setResult(rs.getString("result"));

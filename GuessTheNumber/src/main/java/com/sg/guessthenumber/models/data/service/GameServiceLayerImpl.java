@@ -15,12 +15,14 @@ import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.sg.guessthenumber.models.data.GameDao;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Teresa
  */
+@Component 
 @Service
 public class GameServiceLayerImpl implements GameServiceLayer {
     
@@ -40,7 +42,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         Set<Integer> nums = new HashSet<>();
         String numToAdd = "";
         while (nums.size() < numbers) {
-            Integer toAdd = random.nextInt(10);
+            Integer toAdd = random.nextInt(10); // number from 0-9 
             nums.add(toAdd);
         }
         
@@ -65,29 +67,30 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     @Override
     public Round makeGuess(Round round){
         
-        String answer = this.dao.getGameByID(round.getGame().getGameID()).getWinningNumbers();
+        String answer = this.dao.getGameByID(round.getGameID()).getWinningNumbers();
         String guess = round.getGuess();
-        String result = this.getResult(guess, answer);
+        String result = this.getRoundResult(guess, answer);
         round.setResult(result);
         
-        Game game = this.getGameByID(round.getGame().getGameID());
+        Game game = this.getGameByID(round.getGameID());
+        
         if (guess.equalsIgnoreCase(answer)) {  
             game.setProgress("FINISHED");
             this.dao.updateGame(game);
         } else { 
             game.setProgress("IN PROGRESS");
-        }
-        
+        } 
         return this.dao.addRound(round);
         
     }
     
     @Override
-    public String getResult(String guess, String answer) {
+    public String getRoundResult(String guess, String answer) {
         char[] guessChar = guess.toCharArray();
         char[] answerChar = answer.toCharArray();
         int exact = 0;
         int partial = 0;
+        String result = "";
         
         for (int i = 0; i < guessChar.length; i++){
             
@@ -98,9 +101,11 @@ public class GameServiceLayerImpl implements GameServiceLayer {
                 } else {
                     partial++;
                 }
+                // showing up as 1? 
+                result = "e: " + exact + " p:" + partial;
             }       
         }
-        String result = "e: " + exact + " p: " + partial;
+
         return result;  
     }
 

@@ -12,7 +12,7 @@ package com.sg.guessthenumber.models;
 public class Round {
     
     private int roundID;
-    private Game game;
+    private int gameID;
     private int roundNumber;
     private String guess;
     private String result;
@@ -29,12 +29,12 @@ public class Round {
         this.roundID = roundID;
     }
 
-    public Game getGame() {
-        return game;
+    public int getGameID() {
+        return gameID;
     }
 
-    public void setGame(Game game) {
-        this.game = game;
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
     }
 
     public int getRoundNumber() {
