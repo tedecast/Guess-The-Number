@@ -81,7 +81,7 @@ public class GameDatabaseDao implements GameDao {
     public Round getRoundByID(int roundID) {
         
         final String sql = "SELECT * "
-                + "FROM rounds WHERE roundID = ?;";
+                + "FROM round WHERE roundID = ?;";
         
         return this.jdbcTemplate.queryForObject(sql, new RoundMapper(), roundID);
     }
@@ -89,7 +89,7 @@ public class GameDatabaseDao implements GameDao {
     @Override
     public Round addRound(Round round) {
                 
-        final String sql = "INSERT INTO rounds(gameid, guess, result) VALUES(?,?,?);";
+        final String sql = "INSERT INTO round(gameid, guess, result) VALUES(?,?,?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
         this.jdbcTemplate.update((Connection conn) -> {
@@ -109,9 +109,10 @@ public class GameDatabaseDao implements GameDao {
     }
 
     @Override
-    public List<Round> getAllRounds() {
-        final String sql = "SELECT * from rounds;";
-        return this.jdbcTemplate.query(sql, new RoundMapper());
+    public List<Round> getAllRoundsByID(int gameID) {
+        final String sql = "SELECT * from round "
+                + "WHERE gameID = ?";
+        return this.jdbcTemplate.query(sql, new RoundMapper(), gameID);
     }
 
     private static final class GameMapper implements RowMapper<Game> {

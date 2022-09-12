@@ -51,12 +51,12 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
     
     @Override
-    public Game beginGame() {
+    public int beginGame() {
         
         Game game = new Game();
         game.setWinningNumbers(this.createWinningNumbers());
         this.dao.addGame(game);
-        return game;
+        return game.getGameID();
     }
     
     @Override
@@ -67,7 +67,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         String result = this.getResult(guess, answer);
         round.setResult(result);
         
-        Game game = this.getGamesByID(round.getGame().getGameID());
+        Game game = this.getGameByID(round.getGame().getGameID());
         if (guess.equalsIgnoreCase(answer)) {  
             game.setProgress("FINISHED");
             this.dao.updateGame(game);
@@ -115,7 +115,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
 
     @Override
-    public Game getGamesByID(int gameID) {
+    public Game getGameByID(int gameID) {
         Game game = this.dao.getGameByID(gameID);
         if (game.getProgress().equalsIgnoreCase("IN PROGRESS")) {
             game.setWinningNumbers("****");
@@ -125,8 +125,8 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
 
     @Override
-    public Round getRoundsByID(int gameID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Round> getAllRoundsByID(int gameID) {
+        return this.dao.getAllRoundsByID(gameID);
     }
 
 }

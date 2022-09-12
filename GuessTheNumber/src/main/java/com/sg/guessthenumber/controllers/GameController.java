@@ -5,7 +5,18 @@
  */
 package com.sg.guessthenumber.controllers;
 
+import com.sg.guessthenumber.models.Game;
+import com.sg.guessthenumber.models.Round;
+import com.sg.guessthenumber.models.data.service.GameServiceLayer;
+import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,6 +28,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping ("/api/game")
 public class GameController {
     
+    @Autowired
+    GameServiceLayer service;
     
+    @PostMapping("/begin")
+    @ResponseStatus(HttpStatus.CREATED)
+    public int beginGame(){
+        return this.service.beginGame();
+    }
+    
+    @PostMapping("/guess")
+    public Round makeGuess(@RequestBody Round round){
+        return this.service.makeGuess(round);
+    }
+    
+    @GetMapping("/game")
+    public List<Game> getAllGames() {
+        return this.service.getAllGames();
+    }
+    
+    @GetMapping("/game/{gameId}")
+    public Game getGameByID(@PathVariable("gameid") int gameID) {
+        return this.service.getGameByID(gameID);
+    }
+    
+    @GetMapping("rounds/{gameId}")
+    public List<Round> getRoundsByID(@PathVariable ("gameID") int gameID){
+        return this.service.getAllRoundsByID(gameID);
+    }
     
 }
