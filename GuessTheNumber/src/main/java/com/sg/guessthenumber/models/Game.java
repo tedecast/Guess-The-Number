@@ -13,7 +13,10 @@ public class Game {
     
     private int id;
     private String winningNumbers; 
-    private boolean finished; 
+    private String progress;
+    
+    public Game() {
+    }
 
     public int getId() {
         return id;
@@ -31,11 +34,15 @@ public class Game {
         this.winningNumbers = winningNumbers;
     }
 
-    public boolean isFinished() {
-        return finished;
+    public String getProgress() {
+        return progress;
     }
 
-    public void setFinished(boolean finished) {
-        this.finished = finished;
-    }   
+    public void setProgress(String progress) {
+        this.progress = progress;
+    }
+    
+    
+
+ 
 }
