@@ -35,6 +35,7 @@ public class NumberDatabaseDao implements NumberDao {
     
     @Override
     public Game addGame(Game game) {
+        
         final String sql = "INSERT INTO game(winningNumbers) VALUES(?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
@@ -62,18 +63,50 @@ public class NumberDatabaseDao implements NumberDao {
 
     @Override
     public Game getGameByID(int gameID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        final String sql = "SELECT * "
+                + "FROM game WHERE gameID = ?;";
+        
+        return this.jdbcTemplate.queryForObject(sql, new GameMapper(), gameID);
     }
 
     @Override
+    public Round getRoundByID(int roundID) {
+        
+        final String sql = "SELECT * "
+                + "FROM rounds WHERE roundID = ?;";
+        
+        return this.jdbcTemplate.queryForObject(sql, new RoundMapper(), roundID);
+    }
+    
+    @Override
     public Round addRound(Round round) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                
+        final String sql = "INSERT INTO rounds(guess) VALUES(?);";
+        GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+
+        this.jdbcTemplate.update((Connection conn) -> {
+
+            PreparedStatement statement = conn.prepareStatement(
+                    sql,
+                    Statement.RETURN_GENERATED_KEYS);
+            
+            statement.setString(1, round.getGuess());
+            return statement;
+            
+        }, keyHolder);
+        
+        round.setRoundID(keyHolder.getKey().intValue());
+        
+        return round;
     }
 
     @Override
     public List<Round> getAllRounds() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        final String sql = "SELECT * from rounds;";
+        return this.jdbcTemplate.query(sql, new RoundMapper());
     }
+
 
     private static final class GameMapper implements RowMapper<Game> {
 
