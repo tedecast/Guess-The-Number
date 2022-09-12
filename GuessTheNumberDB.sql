@@ -5,7 +5,7 @@ USE GuessTheNumberDB;
 CREATE TABLE Game(
 gameID INT PRIMARY KEY AUTO_INCREMENT,
 winningNumbers CHAR(4) NOT NULL, 
-progress VARCHAR(12) NULL
+gameStatus VARCHAR(12) NULL
 );
 
 CREATE TABLE Round(

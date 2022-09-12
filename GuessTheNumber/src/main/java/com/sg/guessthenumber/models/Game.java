@@ -13,14 +13,14 @@ public class Game {
     
     private int gameID;
     private String winningNumbers; 
-    private String progress;
+    private String gameStatus;
     
     public Game() {
     }
     
-    public Game(String winningNumbers, String progress){
+    public Game(String winningNumbers, String gameStatus){
         this.winningNumbers = winningNumbers;
-        this.progress = progress;
+        this.gameStatus = gameStatus;
     }
     
     public Game(int gameID) {
@@ -43,12 +43,12 @@ public class Game {
         this.winningNumbers = winningNumbers;
     }
 
-    public String getProgress() {
-        return progress;
+    public String getGameStatus() {
+        return gameStatus;
     }
 
-    public void setProgress(String progress) {
-        this.progress = progress;
+    public void setGameStatus(String gameStatus) {
+        this.gameStatus = gameStatus;
     }
     
     

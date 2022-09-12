@@ -59,7 +59,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         
         Game game = new Game();
         game.setWinningNumbers(this.createWinningNumbers());
-        game.setProgress("IN PROGRESS");
+        game.setGameStatus("IN PROGRESS");
         this.dao.addGame(game);
         return game.getGameID();
     }
@@ -75,10 +75,10 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         Game game = this.getGameByID(round.getGameID());
         
         if (guess.equalsIgnoreCase(answer)) {  
-            game.setProgress("FINISHED");
+            game.setGameStatus("FINISHED");
             this.dao.updateGame(game);
         } else { 
-            game.setProgress("IN PROGRESS");
+            game.setGameStatus("IN PROGRESS");
         } 
         return this.dao.addRound(round);
         
@@ -113,7 +113,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         
         List<Game> games = this.dao.getAllGames();
         for (Game game : games) {
-            if(game.getProgress().equalsIgnoreCase("IN PROGRESS")) {
+            if(game.getGameStatus().equalsIgnoreCase("IN PROGRESS")) {
                 game.setWinningNumbers("****");
             }
         }
@@ -124,7 +124,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     @Override
     public Game getGameByID(int gameID) {
         Game game = this.dao.getGameByID(gameID);
-        if (game.getProgress().equalsIgnoreCase("IN PROGRESS")) {
+        if (game.getGameStatus().equalsIgnoreCase("IN PROGRESS")) {
             game.setWinningNumbers("****");
         }
         

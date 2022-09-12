@@ -35,7 +35,7 @@ public class GameDatabaseDao implements GameDao {
     @Transactional 
     public Game addGame(Game game) {
         
-        final String sql = "INSERT INTO game(winningNumbers, progress) VALUES(?,?);";
+        final String sql = "INSERT INTO game(winningNumbers, gameStatus) VALUES(?,?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
         this.jdbcTemplate.update((Connection conn) -> {
@@ -45,7 +45,7 @@ public class GameDatabaseDao implements GameDao {
                     Statement.RETURN_GENERATED_KEYS);
             
             statement.setString(1, game.getWinningNumbers());
-            statement.setString(2, game.getProgress());
+            statement.setString(2, game.getGameStatus());
             return statement;
             
         }, keyHolder);
@@ -74,8 +74,8 @@ public class GameDatabaseDao implements GameDao {
     
     @Override
     public void updateGame(Game game) {
-        final String sql = "UPDATE game SET progress = ? WHERE gameID = ?";
-        this.jdbcTemplate.update(sql, game.getProgress(), game.getGameID());
+        final String sql = "UPDATE game SET gamestatus = ? WHERE gameID = ?";
+        this.jdbcTemplate.update(sql, game.getGameStatus(), game.getGameID());
     }
     
     
@@ -123,7 +123,7 @@ public class GameDatabaseDao implements GameDao {
             Game game = new Game();
             game.setGameID(rs.getInt("gameid"));
             game.setWinningNumbers(rs.getString("winningnumbers"));
-            game.setProgress(rs.getString("progress"));
+            game.setGameStatus(rs.getString("gamestatus"));
             return game;
 
         }
