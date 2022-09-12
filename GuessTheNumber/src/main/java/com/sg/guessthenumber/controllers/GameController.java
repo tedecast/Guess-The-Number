@@ -33,7 +33,7 @@ public class GameController {
     
     @PostMapping("/begin")
     @ResponseStatus(HttpStatus.CREATED)
-    public Game beginGame(){
+    public int beginGame(){
         return this.service.beginGame();
     }
     

@@ -17,7 +17,7 @@ public interface GameServiceLayer {
     
     public String createWinningNumbers();
     
-    public Game beginGame();
+    public int beginGame();
     
     public Round makeGuess(Round guess);
     

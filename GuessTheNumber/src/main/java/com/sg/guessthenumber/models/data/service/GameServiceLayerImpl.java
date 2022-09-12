@@ -53,12 +53,13 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
     
     @Override
-    public Game beginGame() {
+    public int beginGame() {
         
         Game game = new Game();
         game.setWinningNumbers(this.createWinningNumbers());
+        game.setProgress("IN PROGRESS");
         this.dao.addGame(game);
-        return game;
+        return game.getGameID();
     }
     
     @Override
