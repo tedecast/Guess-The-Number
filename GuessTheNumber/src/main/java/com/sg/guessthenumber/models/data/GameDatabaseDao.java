@@ -35,7 +35,7 @@ public class GameDatabaseDao implements GameDao {
     @Transactional 
     public Game addGame(Game game) {
         
-        final String sql = "INSERT INTO game(winningNumbers) VALUES(?);";
+        final String sql = "INSERT INTO game(winningNumbers, progress) VALUES(?,?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
         this.jdbcTemplate.update((Connection conn) -> {
@@ -45,6 +45,7 @@ public class GameDatabaseDao implements GameDao {
                     Statement.RETURN_GENERATED_KEYS);
             
             statement.setString(1, game.getWinningNumbers());
+            statement.setString(2, game.getProgress());
             return statement;
             
         }, keyHolder);
