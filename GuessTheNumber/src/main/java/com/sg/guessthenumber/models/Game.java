@@ -11,19 +11,23 @@ package com.sg.guessthenumber.models;
  */
 public class Game {
     
-    private int id;
+    private int gameID;
     private String winningNumbers; 
     private String progress;
     
     public Game() {
     }
-
-    public int getId() {
-        return id;
+    
+    public Game(int gameID) {
+        this.gameID = gameID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getGameID() {
+        return gameID;
+    }
+
+    public void setGameID(int gameID) {
+        this.gameID = gameID;
     }
 
     public String getWinningNumbers() {

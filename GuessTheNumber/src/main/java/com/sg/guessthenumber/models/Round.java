@@ -12,6 +12,7 @@ package com.sg.guessthenumber.models;
 public class Round {
     
     private int roundID;
+    private Game game;
     private int roundNumber;
     private String guess;
     private String results;
@@ -26,6 +27,14 @@ public class Round {
     // may not need setter
     public void setRoundID(int roundID) {
         this.roundID = roundID;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public int getRoundNumber() {

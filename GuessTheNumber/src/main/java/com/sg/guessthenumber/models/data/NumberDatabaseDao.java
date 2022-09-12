@@ -49,7 +49,7 @@ public class NumberDatabaseDao implements NumberDao {
             
         }, keyHolder);
         
-        game.setId(keyHolder.getKey().intValue());
+        game.setGameID(keyHolder.getKey().intValue());
         
         return game;
     }
@@ -80,8 +80,9 @@ public class NumberDatabaseDao implements NumberDao {
         @Override
         public Game mapRow(ResultSet rs, int index) throws SQLException {
             Game game = new Game();
-            game.setId(rs.getInt("gameid"));
+            game.setGameID(rs.getInt("gameid"));
             game.setWinningNumbers(rs.getString("winningnumbers"));
+            game.setProgress(rs.getString("progress"));
             return game;
 
         }
@@ -92,8 +93,11 @@ public class NumberDatabaseDao implements NumberDao {
         @Override
         public Round mapRow(ResultSet rs, int index) throws SQLException {
             Round round = new Round();
+            round.setRoundID(index);
+            round.getGame().setGameID(rs.getInt("gameid"));
             round.setRoundNumber(rs.getInt("roundNumber"));
             round.setGuess(rs.getString("guess"));
+            round.setResults(rs.getString("results"));
             return round;
 
         }
