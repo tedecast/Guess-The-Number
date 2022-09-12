@@ -8,7 +8,6 @@ package com.sg.guessthenumber.models.data.service;
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -66,7 +65,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         String answer = this.dao.getGameByID(round.getGame().getGameID()).getWinningNumbers();
         String guess = round.getGuess();
         String result = this.getResult(guess, answer);
-        round.setResults(result);
+        round.setResult(result);
         
         Game game = this.getGamesByID(round.getGame().getGameID());
         if (guess.equalsIgnoreCase(answer)) {  
