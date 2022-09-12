@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.guessthenumber.models.data;
+package com.sg.guessthenumber.models.data.service;
 
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
@@ -13,18 +13,20 @@ import java.util.List;
  *
  * @author Teresa
  */
-public interface NumberDao {
+public interface GameServiceLayer {
     
-    public Game addGame(Game game);
+    public String createWinningNumbers();
+    
+    public Game begin();
+    
+    public Round guess(Round guess);
     
     public List<Game> getAllGames();
     
-    public Game getGameByID(int gameID);
+    public List<Game> getGamesByID();
     
-    public Round getRoundByID(int roundID);
+    public List<Game> getRoundsByID();
     
-    public Round addRound(Round round);
     
-    public List<Round> getAllRounds();
     
 }

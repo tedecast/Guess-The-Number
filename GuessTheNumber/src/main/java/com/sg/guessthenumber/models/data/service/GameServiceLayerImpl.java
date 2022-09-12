@@ -21,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  *
  * @author Teresa
  */
-public class GameService {
+public class GameServiceLayerImpl implements GameServiceLayer {
     
     private static final int numbers = 4;
     private static final Random random = new Random();
@@ -29,10 +29,11 @@ public class GameService {
     private final NumberDao numberDao;
     
     @Autowired
-    public GameService(NumberDao numberDao){
+    public GameServiceLayerImpl(NumberDao numberDao){
         this.numberDao = numberDao;
     }
     
+    @Override
     public String createWinningNumbers() {
         // access randomly?
         Set<Integer> nums = new HashSet<>();
@@ -50,6 +51,7 @@ public class GameService {
         return numToAdd;
     }
     
+    @Override
     public Game begin() {
         
         Game game = new Game();
@@ -58,6 +60,7 @@ public class GameService {
         return game;
     }
     
+    @Override
     public Round guess(Round guess){
         
         List<Game> games = this.numberDao.getAllGames();
@@ -68,5 +71,20 @@ public class GameService {
         int partial = 0;
         
         return result;     
+    }
+
+    @Override
+    public List<Game> getAllGames() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Game> getGamesByID() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Game> getRoundsByID() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
