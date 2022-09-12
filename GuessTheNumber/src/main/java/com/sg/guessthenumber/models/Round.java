@@ -15,6 +15,10 @@ public class Round {
     private String guess;
     private int partial;
     private int exact;
+    
+    public Round() {
+    }
+
 
     public int getRoundNumber() {
         return roundNumber;
