@@ -3,8 +3,10 @@ CREATE DATABASE IF NOT EXISTS Rounds;
 USE Rounds; 
 
 CREATE TABLE Rounds(
-roundNumber int PRIMARY KEY AUTO_INCREMENT,
+roundID int PRIMARY KEY AUTO_INCREMENT,
+gameID int NOT NULL,
+roundNumber int NOT NULL, 
 guess CHAR(4) NOT NULL,
-p int NOT NULL, 
-e int NOT NULL 
+results VARCHAR(12) NOT NULL  
 );
+
