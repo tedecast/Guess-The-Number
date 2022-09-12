@@ -86,7 +86,6 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     
     @Override
     public String getRoundResult(String guess, String answer) {
-        Round round = new Round();
         char[] guessChar = guess.toCharArray();
         char[] answerChar = answer.toCharArray();
         int exact = 0;
@@ -104,7 +103,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
                 }
             }       
         }
-         // showing up as 1? 
+        
         result = "e: " + exact + " p:" + partial;
         return result;  
     }
