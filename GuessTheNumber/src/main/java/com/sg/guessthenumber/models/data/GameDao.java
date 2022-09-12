@@ -27,6 +27,6 @@ public interface GameDao {
     
     public Round addRound(Round round);
     
-    public List<Round> getAllRounds();
+    public List<Round> getAllRoundsByID(int gameID);
     
 }

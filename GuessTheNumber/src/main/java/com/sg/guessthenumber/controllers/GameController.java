@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 
 @RestController
-@RequestMapping ("/api/game")
+@RequestMapping ("/api")
 public class GameController {
     
     @Autowired
@@ -33,7 +33,7 @@ public class GameController {
     
     @PostMapping("/begin")
     @ResponseStatus(HttpStatus.CREATED)
-    public int beginGame(){
+    public Game beginGame(){
         return this.service.beginGame();
     }
     

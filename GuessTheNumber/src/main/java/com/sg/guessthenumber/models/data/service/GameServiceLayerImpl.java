@@ -15,11 +15,13 @@ import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.sg.guessthenumber.models.data.GameDao;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Teresa
  */
+@Service
 public class GameServiceLayerImpl implements GameServiceLayer {
     
     private static final int numbers = 4;
@@ -51,12 +53,12 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
     
     @Override
-    public int beginGame() {
+    public Game beginGame() {
         
         Game game = new Game();
         game.setWinningNumbers(this.createWinningNumbers());
         this.dao.addGame(game);
-        return game.getGameID();
+        return game;
     }
     
     @Override
