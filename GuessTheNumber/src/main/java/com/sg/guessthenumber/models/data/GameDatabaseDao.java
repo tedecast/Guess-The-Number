@@ -89,7 +89,7 @@ public class GameDatabaseDao implements GameDao {
     @Override
     public Round addRound(Round round) {
                 
-        final String sql = "INSERT INTO rounds(guess) VALUES(?);";
+        final String sql = "INSERT INTO rounds(gameid, guess, result) VALUES(?,?,?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
         this.jdbcTemplate.update((Connection conn) -> {
