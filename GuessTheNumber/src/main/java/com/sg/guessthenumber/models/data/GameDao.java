@@ -13,13 +13,15 @@ import java.util.List;
  *
  * @author Teresa
  */
-public interface NumberDao {
+public interface GameDao {
     
     public Game addGame(Game game);
     
     public List<Game> getAllGames();
     
     public Game getGameByID(int gameID);
+    
+    public void updateGame(Game game);
     
     public Round getRoundByID(int roundID);
     

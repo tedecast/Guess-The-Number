@@ -24,12 +24,12 @@ import org.springframework.stereotype.Repository;
  * @author Teresa
  */
 @Repository
-public class NumberDatabaseDao implements NumberDao {
+public class GameDatabaseDao implements GameDao {
 
     private final JdbcTemplate jdbcTemplate;
     
     @Autowired
-    public NumberDatabaseDao(JdbcTemplate jdbcTemplate){
+    public GameDatabaseDao(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
     }
     
@@ -69,7 +69,14 @@ public class NumberDatabaseDao implements NumberDao {
         
         return this.jdbcTemplate.queryForObject(sql, new GameMapper(), gameID);
     }
-
+    
+    @Override
+    public void updateGame(Game game) {
+        final String sql = "UPDATE game SET progress = ? WHERE gameID = ?";
+        this.jdbcTemplate.update(sql, game.getProgress(), game.getGameID());
+    }
+    
+    
     @Override
     public Round getRoundByID(int roundID) {
         
@@ -106,7 +113,6 @@ public class NumberDatabaseDao implements NumberDao {
         final String sql = "SELECT * from rounds;";
         return this.jdbcTemplate.query(sql, new RoundMapper());
     }
-
 
     private static final class GameMapper implements RowMapper<Game> {
 

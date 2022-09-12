@@ -17,15 +17,17 @@ public interface GameServiceLayer {
     
     public String createWinningNumbers();
     
-    public Game begin();
+    public Game beginGame();
     
-    public Round guess(Round guess);
+    public Round makeGuess(Round guess);
+    
+    public String getResult(String guess, String answer);
     
     public List<Game> getAllGames();
     
-    public List<Game> getGamesByID();
+    public Game getGamesByID(int gameID);
     
-    public List<Game> getRoundsByID();
+    public Round getRoundsByID(int gameID);
     
     
     

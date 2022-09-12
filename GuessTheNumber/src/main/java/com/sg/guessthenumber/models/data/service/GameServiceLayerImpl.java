@@ -7,7 +7,6 @@ package com.sg.guessthenumber.models.data.service;
 
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
-import com.sg.guessthenumber.models.data.NumberDao;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -16,6 +15,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.sg.guessthenumber.models.data.GameDao;
 
 /**
  *
@@ -26,11 +26,11 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     private static final int numbers = 4;
     private static final Random random = new Random();
     
-    private final NumberDao numberDao;
+    private final GameDao dao;
     
     @Autowired
-    public GameServiceLayerImpl(NumberDao numberDao){
-        this.numberDao = numberDao;
+    public GameServiceLayerImpl(GameDao dao){
+        this.dao = dao;
     }
     
     @Override
@@ -39,7 +39,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         Set<Integer> nums = new HashSet<>();
         String numToAdd = "";
         while (nums.size() < numbers) {
-            Integer toAdd = random.nextInt();
+            Integer toAdd = random.nextInt(10);
             nums.add(toAdd);
         }
         
@@ -52,39 +52,79 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
     
     @Override
-    public Game begin() {
+    public Game beginGame() {
         
         Game game = new Game();
         game.setWinningNumbers(this.createWinningNumbers());
-        this.numberDao.addGame(game);
+        this.dao.addGame(game);
         return game;
     }
     
     @Override
-    public Round guess(Round guess){
+    public Round makeGuess(Round round){
         
-        List<Game> games = this.numberDao.getAllGames();
-        Round round = new Round();
+        String answer = this.dao.getGameByID(round.getGame().getGameID()).getWinningNumbers();
+        String guess = round.getGuess();
         
-        Round result = new Round();
+        Game game = this.getGamesByID(round.getGame().getGameID());
+        if (guess.equalsIgnoreCase(answer)) {  
+            game.setProgress("FINISHED");
+            this.dao.updateGame(game);
+        } else { 
+            game.setProgress("IN PROGRESS");
+        }
+        
+        return this.dao.addRound(round);
+        
+    }
+    
+    @Override
+    public String getResult(String guess, String answer) {
+        char[] guessChar = guess.toCharArray();
+        char[] answerChar = answer.toCharArray();
         int exact = 0;
         int partial = 0;
         
-        return result;     
+        for (int i = 0; i < guessChar.length; i++){
+            
+            if (answer.indexOf(guessChar[i]) > -1) {
+                if(guessChar[i] == answerChar[i]) {
+                    exact++;
+                } else {
+                    partial++;
+                }
+            }       
+        }
+        String result = "e: " + exact + " p:" + partial;
+        return result;  
     }
 
     @Override
     public List<Game> getAllGames() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        List<Game> games = this.dao.getAllGames();
+        for (Game game : games) {
+            if(game.getProgress().equalsIgnoreCase("IN PROGRESS")) {
+                game.setWinningNumbers("****");
+            }
+        }
+        
+        return games;
     }
 
     @Override
-    public List<Game> getGamesByID() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Game getGamesByID(int gameID) {
+        Game game = this.dao.getGameByID(gameID);
+        if (game.getProgress().equalsIgnoreCase("IN PROGRESS")) {
+            game.setWinningNumbers("****");
+        }
+        
+        return game;
     }
 
     @Override
-    public List<Game> getRoundsByID() {
+    public Round getRoundsByID(int gameID) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
