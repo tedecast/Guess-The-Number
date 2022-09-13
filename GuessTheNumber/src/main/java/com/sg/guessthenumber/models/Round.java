@@ -5,6 +5,8 @@
  */
 package com.sg.guessthenumber.models;
 
+import java.sql.Timestamp;
+
 /**
  *
  * @author Teresa
@@ -16,6 +18,7 @@ public class Round {
     private int roundNumber;
     private String guess;
     private String result;
+    private Timestamp roundTime;
     
     public Round() {
     }
@@ -61,7 +64,12 @@ public class Round {
         this.result = result;
     }
 
+    public Timestamp getRoundTime() {
+        return roundTime;
+    }
 
-    
-    
+    public void setRoundTime(Timestamp roundTime) {
+        this.roundTime = roundTime;
+    }
+  
 }

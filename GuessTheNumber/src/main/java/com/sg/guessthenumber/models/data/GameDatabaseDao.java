@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -140,6 +142,12 @@ public class GameDatabaseDao implements GameDao {
             round.setGameID(rs.getInt("gameid"));
             round.setGuess(rs.getString("guess"));
             round.setResult(rs.getString("result"));
+            
+            Timestamp timestamp = rs.getTimestamp("roundTime");  
+            timestamp = Timestamp.from(Instant.now());
+            round.setRoundTime(timestamp);
+          
+            
             return round;
 
         }
