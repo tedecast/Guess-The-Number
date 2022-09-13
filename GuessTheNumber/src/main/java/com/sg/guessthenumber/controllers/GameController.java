@@ -53,7 +53,6 @@ public class GameController {
         return this.service.getGameByID(gameID);
     }
     
-    //@GetMapping("rounds/{gameId}")
     @RequestMapping(value = "/rounds/{gameid}", method = RequestMethod.GET)
     public List<Round> getRoundsByID(@PathVariable ("gameid") int gameID){
         return this.service.getAllRoundsByID(gameID);
