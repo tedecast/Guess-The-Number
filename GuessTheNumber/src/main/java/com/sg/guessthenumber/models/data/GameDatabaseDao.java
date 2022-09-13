@@ -93,7 +93,7 @@ public class GameDatabaseDao implements GameDao {
     @Transactional
     public Round addRound(Round round) {
                 
-        final String sql = "INSERT INTO round(gameid, guess, result) VALUES(?,?,?);";
+        final String sql = "INSERT INTO round(gameid, guess, result, guesstime) VALUES(?,?,?,?);";
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
 
         this.jdbcTemplate.update((Connection conn) -> {
@@ -105,6 +105,7 @@ public class GameDatabaseDao implements GameDao {
             statement.setInt(1, round.getGameID());
             statement.setString(2, round.getGuess());
             statement.setString(3, round.getResult());
+            statement.setTimestamp(4, Timestamp.valueOf(round.getGuessTime()));
             return statement;
             
         }, keyHolder);
@@ -143,10 +144,8 @@ public class GameDatabaseDao implements GameDao {
             round.setGuess(rs.getString("guess"));
             round.setResult(rs.getString("result"));
             
-            Timestamp timestamp = rs.getTimestamp("roundTime");  
-            timestamp = Timestamp.from(Instant.now());
-            round.setRoundTime(timestamp);
-          
+            Timestamp timestamp = rs.getTimestamp("guesstime");
+            round.setGuessTime(timestamp.toLocalDateTime());
             
             return round;
 

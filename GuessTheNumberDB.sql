@@ -13,7 +13,7 @@ roundID int PRIMARY KEY AUTO_INCREMENT,
 gameID int NOT NULL,
 guess CHAR(4) NOT NULL,
 result VARCHAR(12) NOT NULL, 
-roundTime TIMESTAMP NULL
+guessTime DATETIME NULL
 );
 
 ALTER TABLE Round

@@ -15,26 +15,22 @@ import java.util.Random;
 import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.sg.guessthenumber.models.data.GameDao;
-import org.springframework.stereotype.Component;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Teresa
  */
-@Component 
 @Service
 public class GameServiceLayerImpl implements GameServiceLayer {
     
     private static final int numbers = 4;
     private static final Random random = new Random();
     
-    private final GameDao dao;
-    
     @Autowired
-    public GameServiceLayerImpl(GameDao dao){
-        this.dao = dao;
-    }
+    GameDao dao;
     
     @Override
     public String createWinningNumbers() {
@@ -70,6 +66,9 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         String answer = this.dao.getGameByID(round.getGameID()).getWinningNumbers();
         String guess = round.getGuess();
         String result = this.getRoundResult(guess, answer);
+        
+        LocalDateTime guessTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        round.setGuessTime(guessTime);
         round.setGameID(round.getGameID());
         round.setResult(result);
         
@@ -105,7 +104,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
             }       
         }
         
-        result = "e: " + exact + " p:" + partial;
+        result = "e: " + exact + "  p: " + partial;
         return result;  
     }
 
