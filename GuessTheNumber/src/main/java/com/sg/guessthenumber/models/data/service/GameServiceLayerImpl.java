@@ -70,16 +70,17 @@ public class GameServiceLayerImpl implements GameServiceLayer {
         String answer = this.dao.getGameByID(round.getGameID()).getWinningNumbers();
         String guess = round.getGuess();
         String result = this.getRoundResult(guess, answer);
+        round.setGameID(round.getGameID());
         round.setResult(result);
         
         Game game = this.getGameByID(round.getGameID());
         
+        
         if (guess.equalsIgnoreCase(answer)) {  
             game.setGameStatus("FINISHED");
             this.dao.updateGame(game);
-        } else { 
-            game.setGameStatus("IN PROGRESS");
         } 
+        
         return this.dao.addRound(round);
         
     }

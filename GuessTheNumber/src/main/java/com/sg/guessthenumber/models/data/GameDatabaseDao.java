@@ -100,7 +100,9 @@ public class GameDatabaseDao implements GameDao {
                     sql,
                     Statement.RETURN_GENERATED_KEYS);
             
-            statement.setString(1, round.getGuess());
+            statement.setInt(1, round.getGameID());
+            statement.setString(2, round.getGuess());
+            statement.setString(3, round.getResult());
             return statement;
             
         }, keyHolder);
@@ -136,7 +138,6 @@ public class GameDatabaseDao implements GameDao {
             Round round = new Round();
             round.setRoundID(rs.getInt("roundid"));
             round.setGameID(rs.getInt("gameid"));
-            round.setRoundNumber(rs.getInt("roundNumber"));
             round.setGuess(rs.getString("guess"));
             round.setResult(rs.getString("result"));
             return round;
