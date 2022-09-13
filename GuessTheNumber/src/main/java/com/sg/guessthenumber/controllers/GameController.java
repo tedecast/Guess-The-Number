@@ -7,7 +7,10 @@ package com.sg.guessthenumber.controllers;
 
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
+import com.sg.guessthenumber.models.data.service.FinishedGameException;
 import com.sg.guessthenumber.models.data.service.GameServiceLayer;
+import com.sg.guessthenumber.models.data.service.InvalidGameIDException;
+import com.sg.guessthenumber.models.data.service.InvalidGuessException;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +42,7 @@ public class GameController {
     }
     
     @PostMapping("/guess")
-    public Round makeGuess(@RequestBody Round round){
+    public Round makeGuess(@RequestBody Round round) throws FinishedGameException,InvalidGameIDException, InvalidGuessException{
         return this.service.makeGuess(round);
     }
     

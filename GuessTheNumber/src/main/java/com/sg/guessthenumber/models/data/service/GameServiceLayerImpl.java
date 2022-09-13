@@ -61,7 +61,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
     
     @Override
-    public Round makeGuess(Round round){
+    public Round makeGuess(Round round) throws FinishedGameException, InvalidGameIDException, InvalidGuessException {
         
         String answer = this.dao.getGameByID(round.getGameID()).getWinningNumbers();
         String guess = round.getGuess();
@@ -79,6 +79,22 @@ public class GameServiceLayerImpl implements GameServiceLayer {
             game.setGameStatus("FINISHED");
             this.dao.updateGame(game);
         } 
+        
+        if (game.getGameStatus().equalsIgnoreCase("FINISHED")){
+        
+            throw new FinishedGameException("ERROR: This Game is already FINISHED. "
+                    + "Please Begin a New Game or choose a Game that is 'IN PROGRESS'");
+        }
+        
+        
+        if (guess.length() > 4 || guess.length() < 4 || guess == null
+                || !guess.contains("123456789")){
+            throw new InvalidGuessException ("ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.");
+        
+        
+            
+//("ERROR: No such GameID exists. Please try again and enter a valid GameID.");
+        }
         
         return this.dao.addRound(round);
         
