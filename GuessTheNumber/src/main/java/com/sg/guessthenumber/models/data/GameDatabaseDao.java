@@ -66,12 +66,9 @@ public class GameDatabaseDao implements GameDao {
     @Override
     public Game getGameByID(int gameID) {
         
-        try {
         final String sql = "SELECT * FROM game WHERE gameID = ?;";
+        
         return this.jdbcTemplate.queryForObject(sql, new GameMapper(), gameID);
-        } catch (DataAccessException ex){
-            return null;
-        }
     }
     
     @Override
@@ -117,8 +114,10 @@ public class GameDatabaseDao implements GameDao {
 
     @Override
     public List<Round> getAllRoundsByID(int gameID) {
-        final String sql = "SELECT * from round WHERE gameID = ?";
-        return this.jdbcTemplate.query(sql, new RoundMapper(), gameID);
+        final String sql = "SELECT * from round "
+                + "WHERE gameID = ? ORDER BY guesstime";
+        List<Round> rounds = this.jdbcTemplate.query(sql, new RoundMapper(), gameID);
+        return rounds;
     }
 
     private static final class GameMapper implements RowMapper<Game> {
