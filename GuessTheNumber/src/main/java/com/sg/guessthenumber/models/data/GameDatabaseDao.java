@@ -130,9 +130,10 @@ public class GameDatabaseDao implements GameDao {
     }
     
     @Override
-    public void deleteRoundByID(int roundID) {
-                final String delete_round = "DELETE FROM round WHERE roundid = ?";
-        this.jdbcTemplate.update(delete_round, roundID);
+    public void deleteRoundByID(int gameID, int roundID) {
+        
+        final String delete_round = "DELETE FROM round WHERE gameid = ? AND roundid = ?";
+        this.jdbcTemplate.update(delete_round, gameID, roundID);
     }
 
     @Override

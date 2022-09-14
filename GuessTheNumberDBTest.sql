@@ -1,5 +1,7 @@
 DROP DATABASE IF EXISTS GuessTheNumberDBTest;
 
+CREATE DATABASE GuessTheNumberDBTest;
+
 USE GuessTheNumberDBTest; 
 
 CREATE TABLE Game(

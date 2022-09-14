@@ -31,7 +31,7 @@ public interface GameDao {
     
     public void deleteGameByID(int gameID);
     
-    public void deleteRoundByID(int roundID);
+    public void deleteRoundByID(int gameID, int roundID);
     
     public List<Round> getAllRounds();
     

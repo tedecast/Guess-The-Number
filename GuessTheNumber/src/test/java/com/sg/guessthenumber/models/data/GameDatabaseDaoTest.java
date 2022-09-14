@@ -43,9 +43,14 @@ public class GameDatabaseDaoTest {
         
         
         List<Round> rounds = this.dao.getAllRounds();
-        
-        for (Round round : rounds){
-            this.dao.deleteRoundByID(round.getRoundID());
+
+        for (Game game : games) {
+            this.dao.deleteGameByID(game.getGameID());
+
+            for (Round round : rounds) {
+
+                this.dao.deleteRoundByID(game.getGameID(),round.getRoundID());
+            }
         }
         
         
@@ -58,7 +63,6 @@ public class GameDatabaseDaoTest {
     public void testAddGameGetGameByID() {
         
         Game game = new Game();
-        game.setGameID(1);
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
         this.dao.addGame(game);
@@ -73,12 +77,10 @@ public class GameDatabaseDaoTest {
     @Test
     public void testGetAllGames() {
         Game game = new Game();
-        game.setGameID(1);
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
         
         Game game2 = new Game();
-        game.setGameID(2);
         game.setWinningNumbers("2468");
         game.setGameStatus("IN PROGRESS");
         
@@ -98,7 +100,6 @@ public class GameDatabaseDaoTest {
     public void testUpdateGame() {
         
         Game game = new Game();
-        game.setGameID(1);
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
         this.dao.addGame(game);
@@ -120,23 +121,20 @@ public class GameDatabaseDaoTest {
     public void testAddRoundGetRoundByGameID() {
         
         Game game = new Game();
-        game.setGameID(1);
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
-        this.dao.addGame(game);
+        game = this.dao.addGame(game);
         
         Game gameDao = this.dao.getGameByID(game.getGameID());
         assertEquals(game, gameDao);
         
         Round round = new Round();
-        round.setRoundID(1);
-        round.setGameID(1);
+        round.setGameID(game.getGameID());
         round.setGuess("3691");
         round.setResult("e: 4  p: 0");
-        round.setGuessTime(LocalDateTime.now());
-        this.dao.addRound(round);
-        
-        
+        round.setGuessTime(LocalDateTime.now());       
+        round = this.dao.addRound(round);
+
         assertNotNull(round = this.dao.getRoundByID(round.getRoundID()));
     }
 
@@ -146,6 +144,21 @@ public class GameDatabaseDaoTest {
      */
     @Test
     public void testGetAllRoundsByID() {
+        Game game = new Game();
+        game.setGameID(1);
+        game.setWinningNumbers("3691");
+        game.setGameStatus("IN PROGRESS");
+        this.dao.addGame(game);
+        
+        this.dao.getAllRoundsByGameID(game.getGameID());
+        Round round = new Round();
+        round.setGameID(game.getGameID());
+        round.setGuess("3691");
+        round.setResult("e: 4  p: 0");
+        round.setGuessTime(LocalDateTime.now());       
+        this.dao.addRound(round);
+        
+        
     }
     
 }
