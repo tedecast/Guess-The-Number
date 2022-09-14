@@ -41,7 +41,7 @@ public class GameDatabaseDaoStubImpl implements GameDao {
 
     @Override
     public Game addGame(Game game) {
-        return games.put(1, game);
+        return games.put(game.getGameID(), game);
     }
 
     @Override
@@ -57,7 +57,6 @@ public class GameDatabaseDaoStubImpl implements GameDao {
     @Override
     public void updateGame(Game game) {
         this.games.replace(game.getGameID(), game);
-        
     }
 
     @Override
@@ -67,7 +66,7 @@ public class GameDatabaseDaoStubImpl implements GameDao {
 
     @Override
     public Round addRound(Round round) {
-        return rounds.put(1, round);
+        return rounds.put(round.getRoundID(), round);
     }
 
     
