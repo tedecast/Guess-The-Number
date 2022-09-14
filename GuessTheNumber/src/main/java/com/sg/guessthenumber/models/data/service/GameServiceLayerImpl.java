@@ -17,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sg.guessthenumber.models.data.GameDao;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.stream.Collectors;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 

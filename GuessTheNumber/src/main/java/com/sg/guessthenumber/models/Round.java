@@ -5,7 +5,6 @@
  */
 package com.sg.guessthenumber.models;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 
@@ -22,6 +21,14 @@ public class Round {
     private LocalDateTime guessTime;
     
     public Round() {
+    }
+    
+    public Round(int roundID, int gameID, String guess, String result, LocalDateTime guessTime) {
+        this.roundID = roundID;
+        this.gameID = gameID;
+        this.guess = guess;
+        this.result = result;
+        this.guessTime = guessTime;
     }
 
     public int getRoundID() {
