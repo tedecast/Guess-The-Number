@@ -1,3 +1,2 @@
-com\sg\guessthenumber\models\data\service\GameServiceLayerImplTest.class
 com\sg\guessthenumber\models\data\GameDatabaseDaoTest.class
-com\sg\guessthenumber\models\data\service\GameDatabaseDaoStubImpl.class
+com\sg\guessthenumber\models\data\service\GameServiceLayerImplTest.class

@@ -8,7 +8,6 @@ package com.sg.guessthenumber.models.data.service;
 
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
-import com.sg.guessthenumber.models.data.GameDao;
 import java.time.LocalDateTime;
 import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -46,18 +45,6 @@ public class GameServiceLayerImplTest {
         clearTestingDB();
     }
 
-    
-//    @Autowired
-//    public GameServiceLayerImplTest() {
-//        dao = new GameDatabaseDaoStubImpl();
-//        service = new GameServiceLayerImpl();
-//    }
-
-    // At the start of each test method, here is the state of the HashMaps and Lists
-    // Game(1, "3691", "IN PROGRESS");
-    // Round(1, game.getGameID(), "1963", "e: 0  p: 4", LocalDateTime.now());
-    
-
     /**
      * Test of createWinningNumbers method, of class GameServiceLayerImpl.
      */
@@ -65,23 +52,28 @@ public class GameServiceLayerImplTest {
     public void testCreateWinningNumbers() {
   
         String numbers = this.service.createWinningNumbers();
-        assertTrue(numbers.length() == 4);
-        
+        assertTrue(numbers.length() == 4); 
     }
 
     /**
      * Test of beginGame method, of class GameServiceLayerImpl.
      */
     @Test
-    public void testBeginGame() {
+    public void testBeginGameGetGameID() throws InvalidGameIDException {
         Game game = new Game();
         int gameID = this.service.beginGame();
         
         game = this.service.getGameByID(gameID);
         
         assertTrue(game.getGameStatus().equals("IN PROGRESS"));
-        assertEquals(4, game.getWinningNumbers().length());
+        assertEquals(4, game.getWinningNumbers().length());     
         
+        List<Game> games = this.service.getAllGames();
+        games.add(game);
+          
+        game = this.service.getGameByID(game.getGameID());
+        
+        assertTrue(games.contains(game));
     }
 
     /**
@@ -90,14 +82,9 @@ public class GameServiceLayerImplTest {
     @Test
     public void testMakeGuessGetResult() throws Exception {  
         Game game = new Game();
-        game.setGameID(game.getGameID());
+        game.setGameID(1);
         game.setWinningNumbers("2368");
         game.setGameStatus("IN PROGRESS");
-        
-//        int gameID = game.getGameID();
-//        gameID = this.service.beginGame();
-//        
-//        assertNotNull(gameID);
         
         Round round = new Round();
         round.setGameID(game.getGameID());
@@ -145,25 +132,132 @@ public class GameServiceLayerImplTest {
      */
     @Test
     public void testGetAllGames() {
-//        
-//        List<Game> games = this.service.getAllGames();
-//        
-//        assertEquals(1, games.size()); 
-    }
 
-    /**
-     * Test of getGameByID method, of class GameServiceLayerImpl.
-     */
-    @Test
-    public void testGetGameByID() {
-     
+        Game game = new Game();
+        game.setGameID(1);
+        game.setWinningNumbers("2368");
+        game.setGameStatus("IN PROGRESS");
+        
+        Game game2 = new Game();
+        game.setGameID(2);
+        game.setWinningNumbers("3691");
+        game.setGameStatus("IN PROGRESS");
+        
+        List<Game> games = this.service.getAllGames();
+        games.add(game);
+        games.add(game2);
+        
+        assertEquals(2, games.size()); 
+        assertTrue(games.contains(game));
+        assertTrue(games.contains(game2));
+        
     }
 
     /**
      * Test of getAllRoundsByGameID method, of class GameServiceLayerImpl.
      */
     @Test
-    public void testGetAllRoundsByGameID() {
+    public void testGetAllRoundsByGameID() throws InvalidGameIDException {
+        Game game = new Game();
+        game.setGameID(1);
+        game.setWinningNumbers("3691");
+        game.setGameStatus("IN PROGRESS");
+        
+        int gameID = this.service.beginGame();
+        
+        game = this.service.getGameByID(gameID);  
+        
+        List<Game> games = this.service.getAllGames();
+        games.add(game);
+          
+        game = this.service.getGameByID(game.getGameID());
+        
+        assertTrue(games.contains(game));
+        
+        Round round = new Round();
+        round.setGameID(game.getGameID());
+        round.setRoundID(round.getRoundID());
+        round.setGuess("1963");
+        round.setResult("e:0:p:4");
+        round.setGuessTime(LocalDateTime.now());
+        
+        Round round2 = new Round();
+        round2.setGameID(game.getGameID());
+        round2.setRoundID(round.getRoundID());
+        round2.setGuess("3692");
+        round2.setResult("e:3:p:1");
+        round2.setGuessTime(LocalDateTime.now());
+        
+        List<Round> rounds = this.service.getAllRoundsByGameID(gameID);
+        rounds.add(round);
+        rounds.add(round2);
+        
+        assertTrue(rounds.contains(round));
+        assertTrue(rounds.contains(round2));
+        assertEquals(2, rounds.size());
+       
+    }
+    
+    @Test
+    public void finishedGameException() throws InvalidGameIDException, InvalidGuessException, FinishedGameException {
+        
+        try {
+            Game game = new Game();
+            game.setGameID(1);
+            game.setWinningNumbers("3691");
+            game.setGameStatus("IN PROGRESS");
+
+            int gameID = this.service.beginGame();
+
+            game = this.service.getGameByID(gameID);
+
+            List<Game> games = this.service.getAllGames();
+            games.add(game);
+
+            assertTrue(games.contains(game));
+
+            Round round = new Round();
+            round.setGameID(game.getGameID());
+            round.setRoundID(1);
+            round.setGuess("3691");
+            round.setResult("e:4:p:0");
+            round.setGuessTime(LocalDateTime.now());
+            
+            round = this.service.makeGuess(round);
+            
+            game.setGameStatus("FINISHED"); 
+            
+        } catch (FinishedGameException ex)  {
+            assertTrue(true);
+        }
+    
+    }
+    
+    @Test
+    public void testGetInvalidGameID() throws InvalidGameIDException, FinishedGameException, InvalidGuessException {
+        try {
+            Game game = new Game();
+            game.setGameID(1);
+            game.setWinningNumbers("3691");
+            game.setGameStatus("IN PROGRESS");
+            game = this.service.getGameByID(5);
+
+            Round round = new Round();
+            round.setGameID(game.getGameID());
+            round.setRoundID(10);
+            round.setGuess("1963");
+            round.setResult("e:0:p:4");
+            round.setGuessTime(LocalDateTime.now());
+
+            round = this.service.makeGuess(round);
+            
+            this.service.getAllRoundsByGameID(5);
+            fail("InvalidGameIDException should be thrown");
+
+        } catch (InvalidGameIDException ex) {
+            assertTrue(true);
+        }
+
     }
     
 }
