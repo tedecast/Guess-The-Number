@@ -77,6 +77,5 @@ public class GameControllerExceptionHandler extends ResponseEntityExceptionHandl
         err.setMessage(MESSAGE2);
         return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
     }
-    
-    
+
 }

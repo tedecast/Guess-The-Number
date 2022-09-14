@@ -52,12 +52,12 @@ public class GameController {
     }
     
     @RequestMapping(value = "/game/{gameid}", method = RequestMethod.GET)
-    public Game getGameByID(@PathVariable("gameid") int gameID) {
+    public Game getGameByID(@PathVariable("gameid") int gameID) throws InvalidGameIDException {
         return this.service.getGameByID(gameID);
     }
     
     @RequestMapping(value = "/rounds/{gameid}", method = RequestMethod.GET)
-    public List<Round> getRoundsByID(@PathVariable ("gameid") int gameID) {
+    public List<Round> getRoundsByID(@PathVariable ("gameid") int gameID) throws InvalidGameIDException{
         return this.service.getAllRoundsByGameID(gameID);
     }
     

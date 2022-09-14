@@ -136,20 +136,25 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
 
     @Override
-    public Game getGameByID(int gameID) {
-        
-        Game game = this.dao.getGameByID(gameID);
-        if (game.getGameStatus().equalsIgnoreCase("IN PROGRESS")) {
-            game.setWinningNumbers("****");
+    public Game getGameByID(int gameID) throws InvalidGameIDException {
+        try {
+            Game game = this.dao.getGameByID(gameID);
+            if (game.getGameStatus().equalsIgnoreCase("IN PROGRESS")) {
+                game.setWinningNumbers("****");
+            }
+            return game; 
+        } catch (DataAccessException ex) {
+            throw new InvalidGameIDException("ERROR: No such GameID exists. Please try again and enter a valid GameID.");
         }
-        
-        return game;
     }
 
     @Override
-    public List<Round> getAllRoundsByGameID(int gameID) {
-        
-        return this.dao.getAllRoundsByGameID(gameID);
+    public List<Round> getAllRoundsByGameID(int gameID) throws InvalidGameIDException {
+        try {
+            return this.dao.getAllRoundsByGameID(gameID);
+        } catch (DataAccessException ex) {
+            throw new InvalidGameIDException("ERROR: No such GameID exists. Please try again and enter a valid GameID.");
+        }
     }
 
 }

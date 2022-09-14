@@ -26,9 +26,9 @@ public interface GameServiceLayer {
     
     public List<Game> getAllGames();
     
-    public Game getGameByID(int gameID);
+    public Game getGameByID(int gameID) throws InvalidGameIDException;
     
-    public List<Round> getAllRoundsByGameID(int gameID);
+    public List<Round> getAllRoundsByGameID(int gameID) throws InvalidGameIDException;
     
     
     
