@@ -40,8 +40,7 @@ public class GameDatabaseDaoTest {
         for(Game game : games){
             this.dao.deleteGameByID(game.getGameID());
         }
-        
-        
+           
         List<Round> rounds = this.dao.getAllRounds();
 
         for (Game game : games) {
@@ -142,6 +141,7 @@ public class GameDatabaseDaoTest {
      */
     @Test
     public void testGetAllRounds() {
+        
         Game game = new Game();
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
