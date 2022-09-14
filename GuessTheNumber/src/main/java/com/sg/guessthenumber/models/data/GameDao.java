@@ -27,10 +27,12 @@ public interface GameDao {
     
     public Round addRound(Round round);
     
-    public List<Round> getAllRoundsByID(int gameID);
+    public List<Round> getAllRoundsByGameID(int gameID);
     
     public void deleteGameByID(int gameID);
     
-    public void deleteRoundByGameID(int gameID);
+    public void deleteRoundByID(int roundID);
+    
+    public List<Round> getAllRounds();
     
 }

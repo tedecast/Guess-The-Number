@@ -8,11 +8,9 @@ package com.sg.guessthenumber.models.data;
 import com.sg.guessthenumber.TestApplicationConfiguration;
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
+import java.time.LocalDateTime;
 import java.util.List;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
@@ -42,6 +40,15 @@ public class GameDatabaseDaoTest {
         for(Game game : games){
             this.dao.deleteGameByID(game.getGameID());
         }
+        
+        
+        List<Round> rounds = this.dao.getAllRounds();
+        
+        for (Round round : rounds){
+            this.dao.deleteRoundByID(round.getRoundID());
+        }
+        
+        
     }
     
     /**
@@ -54,20 +61,10 @@ public class GameDatabaseDaoTest {
         game.setGameID(1);
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
-       
-        
-        List<Game> games = this.dao.getAllGames();
-        games.add(game);
-        
         this.dao.addGame(game);
+        
         Game fromDao = this.dao.getGameByID(game.getGameID());
         assertEquals(game, fromDao);
-
-        assertEquals(1, games.size());
-        assertTrue(games.contains(game));
-        
-
-        
     }
 
     /**
@@ -95,32 +92,54 @@ public class GameDatabaseDaoTest {
     }
 
     /**
-     * Test of getGameByID method, of class GameDatabaseDao.
-     */
-    @Test
-    public void testGetGameByID() {
-    }
-
-    /**
      * Test of updateGame method, of class GameDatabaseDao.
      */
     @Test
     public void testUpdateGame() {
+        
+        Game game = new Game();
+        game.setGameID(1);
+        game.setWinningNumbers("3691");
+        game.setGameStatus("IN PROGRESS");
+        this.dao.addGame(game);
+        
+        Game fromDao = this.dao.getGameByID(game.getGameID());
+        assertEquals(game, fromDao);
+        
+        game.setGameStatus("FINISHED");
+        this.dao.updateGame(game);
+        
+        assertNotEquals(game, fromDao);
+        
     }
 
     /**
      * Test of getRoundByID method, of class GameDatabaseDao.
      */
     @Test
-    public void testGetRoundByID() {
+    public void testAddRoundGetRoundByGameID() {
+        
+        Game game = new Game();
+        game.setGameID(1);
+        game.setWinningNumbers("3691");
+        game.setGameStatus("IN PROGRESS");
+        this.dao.addGame(game);
+        
+        Game gameDao = this.dao.getGameByID(game.getGameID());
+        assertEquals(game, gameDao);
+        
+        Round round = new Round();
+        round.setRoundID(1);
+        round.setGameID(1);
+        round.setGuess("3691");
+        round.setResult("e: 4  p: 0");
+        round.setGuessTime(LocalDateTime.now());
+        this.dao.addRound(round);
+        
+        
+        assertNotNull(round = this.dao.getRoundByID(round.getRoundID()));
     }
 
-    /**
-     * Test of addRound method, of class GameDatabaseDao.
-     */
-    @Test
-    public void testAddRound() {
-    }
 
     /**
      * Test of getAllRoundsByID method, of class GameDatabaseDao.

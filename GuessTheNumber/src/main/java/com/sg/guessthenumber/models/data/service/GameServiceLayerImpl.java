@@ -148,9 +148,9 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     }
 
     @Override
-    public List<Round> getAllRoundsByID(int gameID) {
+    public List<Round> getAllRoundsByGameID(int gameID) {
         
-        return this.dao.getAllRoundsByID(gameID);
+        return this.dao.getAllRoundsByGameID(gameID);
     }
 
 }

@@ -27,7 +27,7 @@ public interface GameServiceLayer {
     
     public Game getGameByID(int gameID);
     
-    public List<Round> getAllRoundsByID(int gameID);
+    public List<Round> getAllRoundsByGameID(int gameID);
     
     
     

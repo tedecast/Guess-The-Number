@@ -113,7 +113,7 @@ public class GameDatabaseDao implements GameDao {
     }
 
     @Override
-    public List<Round> getAllRoundsByID(int gameID) {
+    public List<Round> getAllRoundsByGameID(int gameID) {
         final String sql = "SELECT * from round "
                 + "WHERE gameID = ? ORDER BY guesstime";
         List<Round> rounds = this.jdbcTemplate.query(sql, new RoundMapper(), gameID);
@@ -129,10 +129,16 @@ public class GameDatabaseDao implements GameDao {
         this.jdbcTemplate.update(delete_game, gameID);
     }
     
-    // may not need.
     @Override
-    public void deleteRoundByGameID(int gameID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteRoundByID(int roundID) {
+                final String delete_round = "DELETE FROM round WHERE roundid = ?";
+        this.jdbcTemplate.update(delete_round, roundID);
+    }
+
+    @Override
+    public List<Round> getAllRounds() {
+        final String sql = "SELECT * from round;";
+        return this.jdbcTemplate.query(sql, new RoundMapper());
     }
 
     private static final class GameMapper implements RowMapper<Game> {
