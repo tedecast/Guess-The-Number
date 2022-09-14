@@ -19,7 +19,8 @@ public interface GameServiceLayer {
     
     public int beginGame();
     
-    public Round makeGuess(Round guess) throws FinishedGameException, InvalidGameIDException, InvalidGuessException;
+    public Round makeGuess(Round guess) 
+            throws FinishedGameException, InvalidGameIDException, InvalidGuessException;
     
     public String getRoundResult(String guess, String answer);
     

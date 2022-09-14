@@ -5,6 +5,9 @@
  */
 package com.sg.guessthenumber.controllers;
 
+import com.sg.guessthenumber.models.data.service.FinishedGameException;
+import com.sg.guessthenumber.models.data.service.InvalidGameIDException;
+import com.sg.guessthenumber.models.data.service.InvalidGuessException;
 import java.sql.SQLIntegrityConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +25,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestController
 public class GameControllerExceptionHandler extends ResponseEntityExceptionHandler {
     
-    private static final String MESSAGE = "Could not save your game. "
-            + "Please ensure it is valid and try again.";
+    private static final String MESSAGE = "ERROR: Please try again.";
+    private static final String MESSAGE2 = "ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.";
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public final ResponseEntity<Error> handleSqlException(
@@ -34,4 +37,46 @@ public class GameControllerExceptionHandler extends ResponseEntityExceptionHandl
         err.setMessage(MESSAGE);
         return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
     }
+    
+    @ExceptionHandler(FinishedGameException.class)
+    public final ResponseEntity<Error> handleFinishedGameException(
+            FinishedGameException ex,
+            WebRequest request) {
+
+        Error err = new Error();
+        err.setMessage(ex.getLocalizedMessage());
+        return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    
+    @ExceptionHandler(InvalidGameIDException.class)
+    public final ResponseEntity<Error> handleInvalidGameIDException(
+            InvalidGameIDException ex,
+            WebRequest request) {
+
+        Error err = new Error();
+        err.setMessage(ex.getLocalizedMessage());
+        return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    
+    @ExceptionHandler(InvalidGuessException.class)
+    public final ResponseEntity<Error> handleInvalidGuessException(
+            InvalidGuessException ex,
+            WebRequest request) {
+
+        Error err = new Error();
+        err.setMessage(ex.getLocalizedMessage());
+        return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    
+    @ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+    public final ResponseEntity<Error> handleArrayIndexOutOfBoundsException(
+            ArrayIndexOutOfBoundsException ex,
+            WebRequest request) {
+
+        Error err = new Error();
+        err.setMessage(MESSAGE2);
+        return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+    
+    
 }

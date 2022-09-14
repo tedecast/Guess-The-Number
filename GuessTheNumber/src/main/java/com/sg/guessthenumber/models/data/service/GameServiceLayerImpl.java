@@ -85,10 +85,9 @@ public class GameServiceLayerImpl implements GameServiceLayer {
                 throw new FinishedGameException("This Game is now FINISHED. "
                         + "Please Begin a New Game or choose a Game that is IN PROGRESS.");
             }
-
+            
             if (guess.length() != 4 || guess == null) {
                 throw new InvalidGuessException("ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.");
-
             }
 
         } catch (DataAccessException ex) {
