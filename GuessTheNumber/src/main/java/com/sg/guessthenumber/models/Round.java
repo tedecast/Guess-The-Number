@@ -6,6 +6,7 @@
 package com.sg.guessthenumber.models;
 
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 
 /**
@@ -71,4 +72,51 @@ public class Round {
     public void setGuessTime(LocalDateTime guessTime) {
         this.guessTime = guessTime;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + this.roundID;
+        hash = 83 * hash + this.gameID;
+        hash = 83 * hash + Objects.hashCode(this.guess);
+        hash = 83 * hash + Objects.hashCode(this.result);
+        hash = 83 * hash + Objects.hashCode(this.guessTime);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Round other = (Round) obj;
+        if (this.roundID != other.roundID) {
+            return false;
+        }
+        if (this.gameID != other.gameID) {
+            return false;
+        }
+        if (!Objects.equals(this.guess, other.guess)) {
+            return false;
+        }
+        if (!Objects.equals(this.result, other.result)) {
+            return false;
+        }
+        if (!Objects.equals(this.guessTime, other.guessTime)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Round{" + "roundID=" + roundID + ", gameID=" + gameID + ", guess=" + guess + ", result=" + result + ", guessTime=" + guessTime + '}';
+    }
+    
 }

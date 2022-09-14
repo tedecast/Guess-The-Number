@@ -120,6 +120,21 @@ public class GameDatabaseDao implements GameDao {
         return rounds;
     }
 
+    @Override
+    public void deleteGameByID(int gameID) {
+        final String delete_round = "DELETE FROM round WHERE gameid = ?";
+        this.jdbcTemplate.update(delete_round, gameID);
+        
+        final String delete_game = "DELETE FROM game WHERE gameid = ?";
+        this.jdbcTemplate.update(delete_game, gameID);
+    }
+    
+    // may not need.
+    @Override
+    public void deleteRoundByGameID(int gameID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     private static final class GameMapper implements RowMapper<Game> {
 
         @Override
