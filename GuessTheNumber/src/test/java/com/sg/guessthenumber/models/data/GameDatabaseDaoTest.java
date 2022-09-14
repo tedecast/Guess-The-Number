@@ -59,6 +59,7 @@ public class GameDatabaseDaoTest {
         List<Game> games = this.dao.getAllGames();
         games.add(game);
         
+        this.dao.addGame(game);
         Game fromDao = this.dao.getGameByID(game.getGameID());
         assertEquals(game, fromDao);
 
