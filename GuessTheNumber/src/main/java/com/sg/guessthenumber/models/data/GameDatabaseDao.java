@@ -13,10 +13,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -62,13 +60,15 @@ public class GameDatabaseDao implements GameDao {
         final String sql = "SELECT * from game;";
         return this.jdbcTemplate.query(sql, new GameMapper());
     }
-
+    
+    
     @Override
     public Game getGameByID(int gameID) {
-        
+
         final String sql = "SELECT * FROM game WHERE gameID = ?;";
-        
+
         return this.jdbcTemplate.queryForObject(sql, new GameMapper(), gameID);
+
     }
     
     @Override

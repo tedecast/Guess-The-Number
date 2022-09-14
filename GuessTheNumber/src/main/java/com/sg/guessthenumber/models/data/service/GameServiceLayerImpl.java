@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sg.guessthenumber.models.data.GameDao;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.stream.Collectors;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
 /**
@@ -62,42 +64,40 @@ public class GameServiceLayerImpl implements GameServiceLayer {
     
     @Override
     public Round makeGuess(Round round) throws FinishedGameException, InvalidGameIDException, InvalidGuessException {
-        
-        String answer = this.dao.getGameByID(round.getGameID()).getWinningNumbers();
-        String guess = round.getGuess();
-        String result = this.getRoundResult(guess, answer);
-        
-        LocalDateTime guessTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
-        round.setGuessTime(guessTime);
-        round.setGameID(round.getGameID());
-        round.setResult(result);
-        
-        Game game = this.getGameByID(round.getGameID());
-        
-        
-        if (guess.equalsIgnoreCase(answer)) {  
-            game.setGameStatus("FINISHED");
-            this.dao.updateGame(game);
-        } 
-        
-        if (game.getGameStatus().equalsIgnoreCase("FINISHED")){
-        
-            throw new FinishedGameException("ERROR: This Game is already FINISHED. "
-                    + "Please Begin a New Game or choose a Game that is 'IN PROGRESS'");
+        try {
+            String answer = this.dao.getGameByID(round.getGameID()).getWinningNumbers();
+            String guess = round.getGuess();
+            String result = this.getRoundResult(guess, answer);
+
+            LocalDateTime guessTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+            round.setGuessTime(guessTime);
+            round.setGameID(round.getGameID());
+            round.setResult(result);
+
+            Game game = this.getGameByID(round.getGameID());
+
+            if (guess.equalsIgnoreCase(answer)) {
+                game.setGameStatus("FINISHED");
+                this.dao.updateGame(game);
+            }
+
+            if (game.getGameStatus().equalsIgnoreCase("FINISHED")) {
+
+                throw new FinishedGameException("This Game is now FINISHED. "
+                        + "Please Begin a New Game or choose a Game that is IN PROGRESS.");
+            }
+
+            if (guess.length() != 4 || guess == null) {
+                throw new InvalidGuessException("ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.");
+
+            }
+
+        } catch (DataAccessException ex) {
+            throw new InvalidGameIDException ("ERROR: No such GameID exists. Please try again and enter a valid GameID.");
         }
-        
-        
-        if (guess.length() > 4 || guess.length() < 4 || guess == null
-                || !guess.contains("123456789")){
-            throw new InvalidGuessException ("ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.");
-        
-        
-            
-//("ERROR: No such GameID exists. Please try again and enter a valid GameID.");
-        }
-        
+
         return this.dao.addRound(round);
-        
+
     }
     
     @Override
@@ -139,6 +139,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
 
     @Override
     public Game getGameByID(int gameID) {
+        
         Game game = this.dao.getGameByID(gameID);
         if (game.getGameStatus().equalsIgnoreCase("IN PROGRESS")) {
             game.setWinningNumbers("****");
@@ -149,6 +150,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
 
     @Override
     public List<Round> getAllRoundsByID(int gameID) {
+        
         return this.dao.getAllRoundsByID(gameID);
     }
 
