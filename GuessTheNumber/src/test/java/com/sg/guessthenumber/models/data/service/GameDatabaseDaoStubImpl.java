@@ -30,12 +30,12 @@ public class GameDatabaseDaoStubImpl implements GameDao {
 
     public GameDatabaseDaoStubImpl() {
         Game game = new Game(1, "3691", "IN PROGRESS");
-        games.put(1, game);
-        gameList.add(game);
+        games.put(game.getGameID(), game);
+        //gameList.add(game);
         
-        Round round1 = new Round(1, game.getGameID(), "1963", "e: 0  p: 4", LocalDateTime.now());
-        rounds.put(1, round1);   
-        roundList.add(round1);
+        Round round1 = new Round(1, game.getGameID(), "1963", "e:0:p:4", LocalDateTime.now());
+        rounds.put(round1.getRoundID(), round1);   
+        //roundList.add(round1);
     }
     
 

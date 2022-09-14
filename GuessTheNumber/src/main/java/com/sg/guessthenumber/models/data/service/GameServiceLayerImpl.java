@@ -119,7 +119,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
             }       
         }
         
-        result = "e: " + exact + "  p: " + partial;
+        result = "e:" + exact + ":p:" + partial;
         return result;  
     }
 

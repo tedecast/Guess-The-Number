@@ -128,7 +128,7 @@ public class GameDatabaseDaoTest {
         Round round = new Round();
         round.setGameID(game.getGameID());
         round.setGuess("3691");
-        round.setResult("e: 4  p: 0");
+        round.setResult("e:4:p:0");
         round.setGuessTime(LocalDateTime.now());       
         round = this.dao.addRound(round);
 
@@ -154,13 +154,13 @@ public class GameDatabaseDaoTest {
         Round round = new Round();
         round.setGameID(game.getGameID());
         round.setGuess("3692");
-        round.setResult("e: 3  p: 0");
+        round.setResult("e:3:p:0");
         round.setGuessTime(LocalDateTime.now()); 
         
         Round round2 = new Round();
         round2.setGameID(game.getGameID());
         round2.setGuess("1963");
-        round2.setResult("e: 0  p: 4");
+        round2.setResult("e:0:p:4");
         round2.setGuessTime(LocalDateTime.now());      
           
         Game game2 = new Game();
@@ -170,7 +170,7 @@ public class GameDatabaseDaoTest {
         Round round3 = new Round();
         round3.setGameID(game2.getGameID());
         round3.setGuess("3692");
-        round3.setResult("e: 3  p: 0");
+        round3.setResult("e:3:p:0");
         round3.setGuessTime(LocalDateTime.now()); 
 
         List<Round> rounds = this.dao.getAllRounds();
@@ -203,13 +203,13 @@ public class GameDatabaseDaoTest {
         Round round = new Round();
         round.setGameID(game.getGameID());
         round.setGuess("3692");
-        round.setResult("e: 3  p: 0");
+        round.setResult("e:3:p:0");
         round.setGuessTime(LocalDateTime.now()); 
         
         Round round2 = new Round();
         round2.setGameID(game.getGameID());
         round2.setGuess("1963");
-        round2.setResult("e: 0  p: 4");
+        round2.setResult("e:0:p:4");
         round2.setGuessTime(LocalDateTime.now());       
         
         List<Round> rounds = this.dao.getAllRoundsByGameID(game.getGameID());
