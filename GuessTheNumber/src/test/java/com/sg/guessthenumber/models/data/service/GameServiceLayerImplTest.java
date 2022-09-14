@@ -6,8 +6,10 @@
 package com.sg.guessthenumber.models.data.service;
 
 import com.sg.guessthenumber.TestApplicationConfiguration;
-import org.junit.Before;
+import com.sg.guessthenumber.models.Game;
+import com.sg.guessthenumber.models.data.GameDao;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,14 +24,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class GameServiceLayerImplTest {
     
     @Autowired
-    GameServiceLayerImpl service;
+    GameServiceLayerImpl service;   
+    GameDao dao;
+    
     
     public GameServiceLayerImplTest() {
+        dao = new GameDatabaseDaoStubImpl();
+        service = new GameServiceLayerImpl();
     }
 
-    @Before
-    public void setUp() {
-    }
+    // At the start of each test method, here is the state of the HashMaps and Lists
+    // Game(1, "3691", "IN PROGRESS");
+    // Round(1, game.getGameID(), "1963", "e: 0  p: 4", LocalDateTime.now());
     
 
     /**
@@ -37,6 +43,9 @@ public class GameServiceLayerImplTest {
      */
     @Test
     public void testCreateWinningNumbers() {
+  
+        String numbers = this.service.createWinningNumbers();
+        assertTrue(numbers.length() == 4);
     }
 
     /**
@@ -44,6 +53,14 @@ public class GameServiceLayerImplTest {
      */
     @Test
     public void testBeginGame() {
+        Game game = new Game();
+        game.setWinningNumbers(this.service.createWinningNumbers());
+        game.setGameStatus("IN PROGRESS");
+        
+        int gameID = game.getGameID();
+        gameID = this.service.beginGame();
+        
+        assertNotNull(gameID);
     }
 
     /**
