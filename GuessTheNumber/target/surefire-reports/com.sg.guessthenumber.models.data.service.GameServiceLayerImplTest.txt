@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.sg.guessthenumber.models.data.service.GameServiceLayerImplTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.441 s - in com.sg.guessthenumber.models.data.service.GameServiceLayerImplTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.801 s - in com.sg.guessthenumber.models.data.service.GameServiceLayerImplTest

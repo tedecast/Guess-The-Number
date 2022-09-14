@@ -5,7 +5,7 @@
  */
 package com.sg.guessthenumber.models.data;
 
-import com.sg.guessthenumber.TestApplicationConfiguration;
+
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
 import java.time.LocalDateTime;
@@ -23,16 +23,13 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Teresa
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplicationConfiguration.class)
+@SpringBootTest
 public class GameDatabaseDaoTest {
     
     
     @Autowired 
-    GameDatabaseDao dao; 
-    
-    public GameDatabaseDaoTest() {
-    }
-    
+    GameDao dao; 
+
     @Before 
     public void setUp() {
         List<Game> games = this.dao.getAllGames();

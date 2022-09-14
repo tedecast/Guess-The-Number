@@ -5,7 +5,7 @@
  */
 package com.sg.guessthenumber.models.data.service;
 
-import com.sg.guessthenumber.TestApplicationConfiguration;
+
 import com.sg.guessthenumber.models.Game;
 import com.sg.guessthenumber.models.Round;
 import com.sg.guessthenumber.models.data.GameDao;
@@ -19,6 +19,7 @@ import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
@@ -27,12 +28,24 @@ import org.springframework.test.context.junit4.SpringRunner;
  * @author Teresa
  */
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = TestApplicationConfiguration.class)
+@SpringBootTest
 public class GameServiceLayerImplTest {
     
     @Autowired
-    GameServiceLayerImpl service;   
-    GameDatabaseDaoStubImpl dao;
+    GameServiceLayer service;   
+    
+    @Autowired
+    JdbcTemplate jdbc;
+    protected void clearTestingDB(){
+        jdbc.execute("DELETE FROM round;");
+        jdbc.execute("DELETE FROM game;");
+    }
+    
+    @Before
+    public void setUp() {
+        clearTestingDB();
+    }
+
     
 //    @Autowired
 //    public GameServiceLayerImplTest() {
@@ -61,14 +74,13 @@ public class GameServiceLayerImplTest {
      */
     @Test
     public void testBeginGame() {
-//        Game game = new Game();
-//        game.setWinningNumbers("1234");//(this.service.createWinningNumbers());
-//        game.setGameStatus("IN PROGRESS");
-//        
-//        int gameID = game.getGameID();
-//        gameID = this.service.beginGame();
-//        
-//        assertNotNull(gameID);
+        Game game = new Game();
+        int gameID = this.service.beginGame();
+        
+        game = this.service.getGameByID(gameID);
+        
+        assertTrue(game.getGameStatus().equals("IN PROGRESS"));
+        assertEquals(4, game.getWinningNumbers().length());
         
     }
 

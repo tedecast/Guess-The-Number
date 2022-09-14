@@ -9,7 +9,6 @@ com\sg\guessthenumber\models\data\service\GameServiceLayerImpl.class
 com\sg\guessthenumber\models\data\service\InvalidGameIDException.class
 com\sg\guessthenumber\controllers\GameController.class
 com\sg\guessthenumber\models\data\GameDatabaseDao$GameMapper.class
-com\sg\guessthenumber\TestApplicationConfiguration.class
 com\sg\guessthenumber\models\Round.class
 com\sg\guessthenumber\models\data\GameDatabaseDao.class
 com\sg\guessthenumber\models\data\service\InvalidGuessException.class

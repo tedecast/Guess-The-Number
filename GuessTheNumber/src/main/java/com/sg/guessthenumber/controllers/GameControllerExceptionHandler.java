@@ -22,7 +22,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @RestController
 public class GameControllerExceptionHandler extends ResponseEntityExceptionHandler {
     
-    private static final String CONSTRAINT_MESSAGE = "Could not save your game. "
+    private static final String MESSAGE = "Could not save your game. "
             + "Please ensure it is valid and try again.";
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
@@ -31,7 +31,7 @@ public class GameControllerExceptionHandler extends ResponseEntityExceptionHandl
             WebRequest request) {
 
         Error err = new Error();
-        err.setMessage(CONSTRAINT_MESSAGE);
+        err.setMessage(MESSAGE);
         return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }
