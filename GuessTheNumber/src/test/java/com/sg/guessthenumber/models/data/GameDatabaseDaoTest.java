@@ -52,8 +52,6 @@ public class GameDatabaseDaoTest {
                 this.dao.deleteRoundByID(game.getGameID(),round.getRoundID());
             }
         }
-        
-        
     }
     
     /**
@@ -135,30 +133,92 @@ public class GameDatabaseDaoTest {
         round.setGuessTime(LocalDateTime.now());       
         round = this.dao.addRound(round);
 
-        assertNotNull(round = this.dao.getRoundByID(round.getRoundID()));
+        assertNotNull(this.dao.getRoundByID(round.getRoundID()));
     }
 
 
     /**
+     * Test of getAllRounds method, of class GameDatabaseDao.
+     */
+    @Test
+    public void testGetAllRounds() {
+        Game game = new Game();
+        game.setWinningNumbers("3691");
+        game.setGameStatus("IN PROGRESS");
+        
+        List<Game> games = this.dao.getAllGames();
+        games.add(game);
+        assertEquals(1, games.size());
+        assertTrue(games.contains(game));
+        
+        Round round = new Round();
+        round.setGameID(game.getGameID());
+        round.setGuess("3692");
+        round.setResult("e: 3  p: 0");
+        round.setGuessTime(LocalDateTime.now()); 
+        
+        Round round2 = new Round();
+        round2.setGameID(game.getGameID());
+        round2.setGuess("1963");
+        round2.setResult("e: 0  p: 4");
+        round2.setGuessTime(LocalDateTime.now());      
+          
+        Game game2 = new Game();
+        game2.setWinningNumbers("2468");
+        game2.setGameStatus("IN PROGRESS");
+        
+        Round round3 = new Round();
+        round3.setGameID(game2.getGameID());
+        round3.setGuess("3692");
+        round3.setResult("e: 3  p: 0");
+        round3.setGuessTime(LocalDateTime.now()); 
+
+        List<Round> rounds = this.dao.getAllRounds();
+        rounds.add(round);
+        rounds.add(round2);
+        rounds.add(round3);
+        
+        assertEquals(3, rounds.size());
+        assertTrue(rounds.contains(round));
+        assertTrue(rounds.contains(round2));
+        assertTrue(rounds.contains(round3));
+        
+    }
+    
+     /**
      * Test of getAllRoundsByID method, of class GameDatabaseDao.
      */
     @Test
-    public void testGetAllRoundsByID() {
+    public void testGetAllRoundsByGameID() {
+    
         Game game = new Game();
-        game.setGameID(1);
         game.setWinningNumbers("3691");
         game.setGameStatus("IN PROGRESS");
-        this.dao.addGame(game);
         
-        this.dao.getAllRoundsByGameID(game.getGameID());
+        List<Game> games = this.dao.getAllGames();
+        games.add(game);
+        assertEquals(1, games.size());
+        assertTrue(games.contains(game));
+        
         Round round = new Round();
         round.setGameID(game.getGameID());
-        round.setGuess("3691");
-        round.setResult("e: 4  p: 0");
-        round.setGuessTime(LocalDateTime.now());       
-        this.dao.addRound(round);
+        round.setGuess("3692");
+        round.setResult("e: 3  p: 0");
+        round.setGuessTime(LocalDateTime.now()); 
         
+        Round round2 = new Round();
+        round2.setGameID(game.getGameID());
+        round2.setGuess("1963");
+        round2.setResult("e: 0  p: 4");
+        round2.setGuessTime(LocalDateTime.now());       
         
+        List<Round> rounds = this.dao.getAllRoundsByGameID(game.getGameID());
+        rounds.add(round);
+        rounds.add(round2);
+        
+        assertEquals(2, rounds.size());
+        assertTrue(rounds.contains(round));
+        assertTrue(rounds.contains(round2));
     }
     
 }
