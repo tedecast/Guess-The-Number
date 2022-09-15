@@ -55,7 +55,7 @@ public class GameControllerExceptionHandler extends ResponseEntityExceptionHandl
 
         Error err = new Error();
         err.setMessage(ex.getLocalizedMessage());
-        return new ResponseEntity<>(err, HttpStatus.UNPROCESSABLE_ENTITY);
+        return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);
     }
     
     @ExceptionHandler(InvalidGuessException.class)

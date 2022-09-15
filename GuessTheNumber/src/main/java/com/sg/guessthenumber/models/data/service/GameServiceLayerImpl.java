@@ -74,16 +74,16 @@ public class GameServiceLayerImpl implements GameServiceLayer {
             round.setResult(result);
 
             Game game = this.getGameByID(round.getGameID());
-
-            if (guess.equalsIgnoreCase(answer)) {
-                game.setGameStatus("FINISHED");
-                this.dao.updateGame(game);
-            }
-
+            
             if (game.getGameStatus().equalsIgnoreCase("FINISHED")) {
 
                 throw new FinishedGameException("This Game is now FINISHED. "
                         + "Please Begin a New Game or choose a Game that is IN PROGRESS.");
+            }
+
+            if (guess.equalsIgnoreCase(answer)) {
+                game.setGameStatus("FINISHED");
+                this.dao.updateGame(game);
             }
             
             if (guess.length() != 4 || guess == null) {
