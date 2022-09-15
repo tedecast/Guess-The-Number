@@ -227,6 +227,15 @@ public class GameServiceLayerImplTest {
             
             game.setGameStatus("FINISHED"); 
             
+            Round round2 = new Round();
+            round2.setGameID(game.getGameID());
+            round2.setRoundID(2);
+            round2.setGuess("3692");
+            round2.setResult("e:3:p:1");
+            round2.setGuessTime(LocalDateTime.now());
+            
+            round2 = this.service.makeGuess(round2);
+            
         } catch (FinishedGameException ex)  {
             assertTrue(true);
         }
