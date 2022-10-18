@@ -1,0 +1,32 @@
+#mainTitle{
+    margin-top: 10px;
+    font-size: 60px;
+    text-align: center;
+}
+
+#rulesButton {
+    padding: 20px;
+    margin-top: 1rem;
+    margin-left: 10rem;
+}
+
+#previousButton{
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+#roundsButton {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+#continueButton {
+    margin-top: 1rem;
+    margin-left: 1.5rem;
+}
+
+#beginButton {
+    margin-top: 1rem;
+    margin-left: 29.3rem;
+    padding: 30px;
+}
