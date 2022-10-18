@@ -11,32 +11,38 @@
     padding: 20px;
     margin-top: 1rem;
     margin-left: 10rem;
+    font-family: 'Brush Script MT', cursive;
 }
 
 #previousButton{
     margin-top: 1rem;
     margin-left: 1.5rem;
+    font-family: 'Brush Script MT', cursive;
 }
 
 #roundsButton {
     margin-top: 1rem;
     margin-left: 1.5rem;
+    font-family: 'Brush Script MT', cursive;
 }
 
 #continueButton {
     margin-top: 1rem;
     margin-left: 1.5rem;
+    font-family: 'Brush Script MT', cursive;
 }
 
 #beginButton {
     margin-top: 1rem;
-    margin-left: 28.8rem;
+    margin-left: 29.3rem;
     padding: 30px;
+    font-family: 'Brush Script MT', cursive;
 }
 
 #returnButton {
     margin-left: 60rem;
     margin-top: 25rem;
+    font-family: 'Brush Script MT', cursive;
 }
 
 #rulesHeader {
@@ -47,6 +53,7 @@
 }
 
 #rules {
-    font-size: 25px;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 24px;
     font-weight: bold;
 }
