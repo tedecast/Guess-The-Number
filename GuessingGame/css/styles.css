@@ -1,3 +1,9 @@
+body {
+    background-color: rgb(0, 0, 0);
+}
+hr {
+    background-color: aqua;
+}
 #mainTitle{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -5,38 +11,49 @@
     text-align: center;
     font-family: 'Roboto Slab', serif;
     font-weight: bold;
+    color: white;
 }
 
 #rulesButton {
     padding: 20px;
     margin-top: 1rem;
-    margin-left: 10rem;
+    margin-left: 11.4rem;
     font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    color: whitesmoke;
 }
 
 #previousButton{
     margin-top: 1rem;
-    margin-left: 1.5rem;
+    margin-left: 1.2rem;
     font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    color: whitesmoke;
 }
 
 #roundsButton {
     margin-top: 1rem;
-    margin-left: 1.5rem;
+    margin-left: 1.2rem;
     font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    color: whitesmoke;
 }
 
 #continueButton {
     margin-top: 1rem;
-    margin-left: 1.5rem;
+    margin-left: 1.2rem;
     font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    color: whitesmoke;
 }
 
 #beginButton {
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-left: 29.6rem;
     padding: 30px;
     font-family: 'Raleway', sans-serif;
+    font-size: 24px;
+    color: whitesmoke;
 }
 
 #returnButton {
@@ -50,10 +67,12 @@
     font-size: 60px;
     font-family: 'Roboto Slab', serif;
     font-weight: bold;
+    color: white;
 }
 
 #rules {
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
     font-weight: bold;
+    color: white;
 }
