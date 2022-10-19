@@ -3,7 +3,7 @@
     margin-bottom: 10px;
     font-size: 60px;
     text-align: center;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Roboto Slab', serif;
     font-weight: bold;
 }
 
@@ -11,49 +11,49 @@
     padding: 20px;
     margin-top: 1rem;
     margin-left: 10rem;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 #previousButton{
     margin-top: 1rem;
     margin-left: 1.5rem;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 #roundsButton {
     margin-top: 1rem;
     margin-left: 1.5rem;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 #continueButton {
     margin-top: 1rem;
     margin-left: 1.5rem;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 #beginButton {
     margin-top: 1rem;
-    margin-left: 29.3rem;
+    margin-left: 29.6rem;
     padding: 30px;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 #returnButton {
     margin-left: 60rem;
     margin-top: 25rem;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
 }
 
 #rulesHeader {
     text-align: center;
     font-size: 60px;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Roboto Slab', serif;
     font-weight: bold;
 }
 
 #rules {
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Raleway', sans-serif;
     font-size: 24px;
     font-weight: bold;
 }
