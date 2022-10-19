@@ -49,7 +49,7 @@ hr {
 
 #beginButton {
     margin-top: 2rem;
-    margin-left: 29.6rem;
+    margin-left: 27rem;
     padding: 30px;
     font-family: 'Raleway', sans-serif;
     font-size: 24px;
@@ -72,7 +72,6 @@ hr {
 
 #rules {
     font-family: 'Raleway', sans-serif;
-    font-size: 24px;
-    font-weight: bold;
-    color: white;
+    font-size: 30px;
+    color: whitesmoke;
 }
