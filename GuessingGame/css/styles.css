@@ -117,5 +117,16 @@ hr {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   color: white;
-  margin-left: 15rem;
+  text-align: center;
+}
+
+#continueTable {
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    color: white;
+    margin-left: 25rem;
+}
+
+#gameTable {
+    margin-left: 10rem;
 }
