@@ -128,11 +128,26 @@ hr {
 }
 
 #gameTable {
-    margin-left: 28rem;
+    margin-left: 27.3rem;
 }
 
-.tn {
-    margin-left: 4px;
+#guessInput {
+    font-size: 40px;
+    background-color: whitesmoke;
+    text-align: center;
+    margin-left: 27.5rem;
+}
+
+.num {
     font-size: 40px;
     padding: 30px;
+    margin: 4px;
+}
+
+#deleteSubmit {
+    font-family: "Raleway", sans-serif;
+    margin-left: 28.5rem;
+}
+.buttons {
+    font-size: 26.5px;
 }
