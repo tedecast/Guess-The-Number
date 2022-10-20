@@ -119,10 +119,9 @@
 
         <!-- Guess The Number Game-->
         <div class="guessingGame">
-            <input id="guessInput"
-                class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
+            <input id="guessInput" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
             <table id="gameTable">
-                
+
                 <tr>
                     <!-- <td colspan="3"><input type="text" id="guessInput" class="form-control col-12 mb-3 p-5 border-info">
                     </td> -->
@@ -163,6 +162,21 @@
                 <button class="buttons btn btn-danger btn-lg mt-2 mr-4" type="button" id="deleteButton">Delete</button>
                 <button class="buttons btn btn-success btn-lg mt-2" type="button" id="submitButton">Submit</button>
             </div>
+        </div>
+        <div class="container">
+
+            <table id="guessTable" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th width="20%">Round</th>
+                        <th width="35%">Guess</th>
+                        <th width="45%">Result</th>
+                    </tr>
+                </thead>
+                <tbody id="guessRows">
+                    <!-- Guess Contents Go Here -->
+                </tbody>
+            </table>
         </div>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
