@@ -127,15 +127,22 @@ hr {
   margin-left: 25rem;
 }
 
+#gameID {
+  font-family: "Raleway", sans-serif;
+  font-size: 40px;
+  color: whitesmoke;
+  margin-left: 5rem;
+}
+
 #gameTable {
-  margin-left: 27.312rem;
+  margin-left: 5rem;
 }
 
 #guessInput {
   font-size: 40px;
   background-color: whitesmoke;
   text-align: center;
-  margin-left: 27.5rem;
+  margin-left: 5.2rem;
 }
 
 .num {
@@ -146,13 +153,29 @@ hr {
 
 #deleteSubmit {
   font-family: "Raleway", sans-serif;
-  margin-left: 28.5rem;
+  margin-left: 5.5rem;
 }
 .buttons {
-  font-size: 26.5px;
+  font-size: 28px;
 }
 
-#guessTable{
+#deleteButton {
+  position: relative;
+  padding-left: 45px;
+  padding-right: 45px;
+  top: -8.5rem;
+  left: 6rem;
+}
+
+#submitButton {
+  position: relative;
+  padding-left: 41px;
+  padding-right: 41px;
+  top: -4.5rem;
+  left: -6.3rem;
+}
+
+#guessTable {
   display: block;
   height: 400px;
   width: 600px;
@@ -161,4 +184,7 @@ hr {
   font-family: "Raleway", sans-serif;
   color: whitesmoke;
   text-align: center;
+  position: relative;
+  left: 32rem;
+  top: -39rem;
 }
