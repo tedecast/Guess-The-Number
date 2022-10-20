@@ -128,5 +128,11 @@ hr {
 }
 
 #gameTable {
-    margin-left: 10rem;
+    margin-left: 28rem;
+}
+
+.tn {
+    margin-left: 4px;
+    font-size: 40px;
+    padding: 30px;
 }
