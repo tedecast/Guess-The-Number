@@ -18,12 +18,15 @@
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <!-- Main Container -->
 
 <body>
 
 
     <div class="container">
+
+        <!-- Main Page -->
         <h1 id="mainTitle">Guess The Number</h1>
         <hr>
         <ul class="list-group" id="errormessages"></ul>
@@ -34,13 +37,15 @@
             </button>
             <button class="btn btn-outline-info btn-lg" type="button" id="previousButton">Previous Games</button>
             <button class="btn btn-outline-info btn-lg" type="button" id="roundsButton">Rounds <br>By Game ID</button>
-            <button class="btn btn-outline-info btn-lg" type="button" id="continueButton">Continue <br>Previous Game</button>
+            <button class="btn btn-outline-info btn-lg" type="button" id="continueButton">Continue <br>Previous
+                Game</button>
         </div>
         <button class="btn btn-outline-info btn-lg" type="button" id="beginButton">Begin A New Game</button>
         <div>
             <button class="btn btn-danger btn-lg" type="button" id="returnButton">Return Back To Main</button>
         </div>
 
+        <!-- Rules Page -->
         <div>
             <h1 id="rulesHeader">Rules</h1>
             <hr>
@@ -50,14 +55,54 @@
                 <br>
                 <p id="ruleTwo">2) Your guess must be a 4 digit number.</p>
                 <br>
-                <p id="ruleThree">3) Partial means that you are partially correct, but one or more of the numbers is <em> not</em> in the correct spot.</p>
+                <p id="ruleThree">3) Partial means that you are partially correct, but one or more of the numbers is
+                    <em> not</em> in the correct spot.
+                </p>
                 <br>
                 <p id="ruleFour">4) Exact means that one or more of the numbers is correct.</p>
                 <br>
                 <p id="ruleFive">5) You can exit out of a game anytime by clicking the "Return Back To Main" button.
                 </p>
             </div>
+        </div>
 
+        <!-- Previous Games Page -->
+        <div id="previousGames">
+            <h1 id="previousHeader">Previous Games</h1>
+            <hr>
+            <table id="previousTable">
+                <thead>
+                    <tr>
+                        <th width="30%">Game ID</th>
+                        <th width="40%">Winning Numbers</th>
+                        <th width="14%">Game Status</th>
+                    </tr>
+                </thead>
+                <!-- Previous Games Contents -->
+                <tbody id="contentRows"></tbody>
+            </table>
+        </div>
+
+        <!-- Rounds by Game ID -->
+        <div>
+            <h1 id="roundsHeader">Rounds By Game ID</h1>
+            <hr>
+            <div class="form-group row" id="roundsByGameID">
+                <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game ID:</label>
+
+                <div class="col-md-2">
+                    <input type="text" class="form-control p-4" id="gameIDSearch" placeholder="Game ID" required>
+                </div>
+
+                <button class="btn btn-info btn-lg" type="button" id="enterButton">Enter</button>
+            </div>
+        </div>
+
+        <!-- Continue Previous Games -->
+        <div>
+            <h1 id="continueHeader">Continue Previous Game</h1>
+            <hr>
+            <p id="selectText">Please select a previous game</p>
         </div>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
