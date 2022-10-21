@@ -23,7 +23,6 @@
 
 <body>
 
-
     <div class="container">
 
         <!-- Main Page -->
@@ -106,10 +105,11 @@
                 clicking the Game ID number.)</p>
 
 
-            <table id="continueTable">
+            <table id="continueTable" class="table table-bordered col-3 text-center">
                 <thead>
                     <tr>
-                        <th width="">Game ID</th>
+                        <th>Game ID</th>
+                        <th>Select</th>
                     </tr>
                 </thead>
                 <!-- Previous Games Contents -->
@@ -121,60 +121,46 @@
         <div class="guessingGame">
             <h1 id="gameID">Game ID:</h1>
             <input id="guessInput" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
-            <table id="gameTable">
 
-                <tr>
-                    <!-- <td colspan="3"><input type="text" id="guessInput" class="form-control col-12 mb-3 p-5 border-info">
-                    </td> -->
-                </tr>
-                <tr>
-                    <!-- create button and assign value to each button -->
-                    <!-- dis("1") will call function dis to display value -->
-                    <td><input type="button" value="0" onclick="dis('0')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                    <td><input type="button" value="1" onclick="dis('1')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                    <td><input type="button" value="2" onclick="dis('2')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                </tr>
-                <tr>
-                    <td><input type="button" value="3" onclick="dis('3')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                    <td><input type="button" value="4" onclick="dis('4')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                    <td><input type="button" value="5" onclick="dis('5')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                </tr>
-                <tr>
-                    <td><input type="button" value="6" onclick="dis('6')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                    <td><input type="button" value="7" onclick="dis('7')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                    <td><input type="button" value="8" onclick="dis('8')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                </tr>
-                <tr>
-                    <td><input type="button" value="9" onclick="dis('9')" onkeydown="myFunction(event)"
-                            class="num btn-outline-info btn-lg"> </td>
-                </tr>
-            </table>
-            <div id="deleteSubmit">
-                <button class="buttons btn btn-danger btn-lg mt-2 mr-3" type="button" id="deleteButton">Delete</button>
-                <button class="buttons btn btn-info btn-lg mt-2" type="button" id="submitButton">Submit</button>
+
+            <div>
+                <button onclick="dis('0')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg"
+                    id="zero">0</button>
+                <button type="button" onclick="dis('1')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg" id="one">1</button>
+                <button type="button" onclick="dis('2')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg" id="two">2</button>
             </div>
-            <table id="guessTable" class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th width="20%">Round</th>
-                        <th width="35%">Guess</th>
-                        <th width="45%">Result</th>
-                    </tr>
-                </thead>
-                <tbody id="guessRows">
-                    <!-- Guess Contents Go Here -->
-                </tbody>
-            </table>
+
+            <div>
+                <button onclick="dis('3')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">3</button>
+                <button onclick="dis('4')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">4</button>
+                <button onclick="dis('5')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">5</button>
+            </div>
+
+            <div>
+                <button onclick="dis('6')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">6</button>
+                <button onclick="dis('7')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">7</button>
+                <button onclick="dis('8')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">8</button>
+            </div>
+
+            <div>
+                <button onclick="dis('9')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">9</button>
+                <button class="buttons btn btn-danger btn-lg mt-2 mr-3" type="button" id="clearButton">Clear</button>
+                <button class="buttons btn btn-info btn-lg mt-2" type="button" id="enterButton">Enter</button>
+            </div>
         </div>
+        <table id="guessTable" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th width="20%">Round</th>
+                    <th width="35%">Guess</th>
+                    <th width="45%">Result</th>
+                </tr>
+            </thead>
+            <tbody id="guessRows">
+                <!-- Guess Contents Go Here -->
+            </tbody>
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
