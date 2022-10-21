@@ -30,19 +30,25 @@
         <hr>
         <ul class="list-group" id="errormessages"></ul>
 
-        <div class="row col-12">
-            <button class="btn btn-outline-info btn-lg" type="button" id="rulesButton">
-                Rules
-            </button>
-            <button class="btn btn-outline-info btn-lg" type="button" id="previousButton">Previous Games</button>
-            <button class="btn btn-outline-info btn-lg" type="button" id="roundsButton">Rounds <br>By Game ID</button>
-            <button class="btn btn-outline-info btn-lg" type="button" id="continueButton">Continue <br>Previous
-                Game</button>
-        </div>
-        <button class="btn btn-outline-info btn-lg" type="button" id="beginButton">Begin A New Game</button>
         <div>
+            <div id="mainFlex">
+                <button class="btn btn-outline-info btn-lg mr-3" type="button" id="rulesButton">
+                    Rules
+                </button>
+                <button class="btn btn-outline-info btn-lg mr-3" type="button" id="previousButton">Previous<br>
+                    Games</button>
+                <button class="btn btn-outline-info btn-lg mr-3" type="button" id="roundsButton">Rounds<br>By Game
+                    ID</button>
+                <button class="btn btn-outline-info btn-lg" type="button" id="continueButton">Continue <br>Previous
+                    Game</button>
+
+            </div>
+            
+            <button class="btn btn-outline-info btn-lg mt-3" id="beginButton">Begin <br>A New Game</button>
+
             <button class="btn btn-danger btn-lg" type="button" id="returnButton">Return Back To Main</button>
         </div>
+
 
         <!-- Rules Page -->
         <div>
@@ -83,17 +89,17 @@
         </div>
 
         <!-- Rounds by Game ID -->
-        <div>
+        <div id="roundSearch">
             <h1 id="roundsHeader">Rounds By Game ID</h1>
             <hr>
-            <div class="form-group row" id="roundsByGameID">
-                <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game ID:</label>
+            <div class="row md-12" id="roundsByGameID">
+                <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game
+                    ID:</label>
 
-                <div class="col-md-2">
-                    <input type="text" class="form-control p-4" id="gameIDSearch" placeholder="Game ID" required>
-                </div>
 
-                <button class="btn btn-info btn-lg" type="button" id="enterButton">Enter</button>
+                <input type="text" class="form-control col-2 p-4" id="gameIDSearch" placeholder="Game ID" required>
+
+                <button class="btn btn-info btn-md ml-2 mb-1" type="button" id="enterButton">Enter</button>
             </div>
         </div>
 
@@ -101,15 +107,12 @@
         <div>
             <h1 id="continueHeader">Continue Previous Game</h1>
             <hr>
-            <p id="selectText">Please select a previous game from the options below.<br>(You can also view the rounds by
-                clicking the Game ID number.)</p>
+            <p id="selectText">Please select a previous game from the options below.</p>
 
-
-            <table id="continueTable" class="table table-bordered col-3 text-center">
+            <table id="continueTable" class="table table-bordered col-2 text-center">
                 <thead>
                     <tr>
                         <th>Game ID</th>
-                        <th>Select</th>
                     </tr>
                 </thead>
                 <!-- Previous Games Contents -->
@@ -133,21 +136,29 @@
             </div>
 
             <div>
-                <button onclick="dis('3')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">3</button>
-                <button onclick="dis('4')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">4</button>
-                <button onclick="dis('5')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">5</button>
+                <button type="button" onclick="dis('3')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">3</button>
+                <button type="button" onclick="dis('4')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">4</button>
+                <button type="button" onclick="dis('5')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">5</button>
             </div>
 
             <div>
-                <button onclick="dis('6')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">6</button>
-                <button onclick="dis('7')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">7</button>
-                <button onclick="dis('8')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">8</button>
+                <button type="button" onclick="dis('6')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">6</button>
+                <button type="button" onclick="dis('7')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">7</button>
+                <button type="button" onclick="dis('8')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">8</button>
             </div>
 
             <div>
-                <button onclick="dis('9')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg">9</button>
-                <button class="buttons btn btn-danger btn-lg mt-2 mr-3" type="button" id="clearButton">Clear</button>
-                <button class="buttons btn btn-info btn-lg mt-2" type="button" id="enterButton">Enter</button>
+                <button type="button" onclick="dis('9')" onkeydown="myFunction(event)"
+                    class="num btn-outline-info btn-lg">9</button>
+                <button type="button" class="btn btn-danger btn-lg mt-2 mr-3" type="button"
+                    id="clearButton">Clear</button>
+                <button type="button" class="btn btn-info btn-lg mt-2" type="button" id="enterGameButton">Enter</button>
             </div>
         </div>
         <table id="guessTable" class="table table-bordered">
