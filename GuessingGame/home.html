@@ -29,7 +29,7 @@
         <div id="mainPage">
             <h1 id="titleHeader">Guess The Number</h1>
             <hr>
-            <ul class="list-group" id="errormessages"></ul>
+            <ul class="list-group text-center" id="errormessages"></ul>
 
             <div id="mainFlex">
                 <button class="btn btn-outline-info btn-lg mr-3" type="button" id="rulesButton">
@@ -92,6 +92,8 @@
         <div id="roundsPage" style="display:none">
             <h1 id="titleHeader">Rounds By Game ID</h1>
             <hr>
+            <ul class="list-group text-center mb-3" id="roundsError"></ul>
+
             <div class="row md-12" id="roundsByGameID">
                 <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game
                     ID:</label>
@@ -102,6 +104,9 @@
             </div>
             <button class="back btn btn-danger btn-lg" type="button" id="backButtonThree">Back To
                 Main</button>
+
+            <h1 id="titleHeader" class="gameIDHeader"></h1>
+            <hr>
             <table id="roundTable" class="table">
                 <thead>
                     <tr>

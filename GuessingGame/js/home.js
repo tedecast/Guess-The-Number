@@ -62,6 +62,8 @@ $("#roundsButton").click(function (event) {
 });
 
 $("#enterButton").click(function (event) {
+  // include if no rounds exists.
+  $("#roundsError").empty();
   let roundContents = $("#roundContents");
 
   $.ajax({
@@ -73,7 +75,9 @@ $("#enterButton").click(function (event) {
         let guess = round.guess;
         let result = round.result;
         let guessTime = round.guessTime;
+        let gameID = round.gameID;
 
+        $(".gameIDHeader").text("Game " + gameID);
         let row = "<tr>";
         row += "<td>" + roundID + "</td>";
         row += "<td>" + guess + "</td>";
@@ -85,16 +89,18 @@ $("#enterButton").click(function (event) {
       });
     },
     error: function (result) {
-      $("#errorMessages").append(
+      $("#roundsError").append(
         $("<li>")
           .attr({ class: "list-group-item list-group-item-danger" })
-          .text(result.responseJSON.message)
+          .text("ERROR: Please enter a valid Game ID.")
       );
     },
   });
 });
 
 $("#backButtonThree").click(function (event) {
+  $(".gameIDHeader").text("");
+  $("#roundsError").empty();
   $("#roundContents").empty();
   $("#gameIDSearch").val("");
   $("#roundsPage").hide();
