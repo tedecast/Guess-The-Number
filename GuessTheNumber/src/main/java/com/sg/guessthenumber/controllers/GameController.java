@@ -30,7 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
-@CrossOrigin(origins = {"http://localhost:8080", "http://127.0.0.1:5500"})
+@CrossOrigin(origins = "*")
 public class GameController {
 
     @Autowired
