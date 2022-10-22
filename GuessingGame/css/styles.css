@@ -194,3 +194,9 @@ hr {
   left: 32rem;
   top: -39rem;
 }
+
+#roundTable {
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    color: white;
+  }

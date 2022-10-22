@@ -75,7 +75,7 @@
         <div id="previousGames">
             <h1 id="previousHeader">Previous Games</h1>
             <hr>
-            <table id="previousTable" class="table table-hover">
+            <table id="previousTable" class="table">
                 <thead>
                     <tr>
                         <th width="30%">Game ID</th>
@@ -101,6 +101,18 @@
 
                 <button class="btn btn-info btn-md ml-2 mb-1" type="button" id="enterButton">Enter</button>
             </div>
+            <table id="roundTable" class="table">
+                <thead>
+                    <tr>
+                        <th width="25%">Round</th>
+                        <th width="25%">Guess</th>
+                        <th width="25%">Result</th>
+                        <th width="25%">Guess Time</th>
+                    </tr>
+                </thead>
+                <!-- Round Contents -->
+                <tbody id="roundContents"></tbody>
+            </table>
         </div>
 
         <!-- Continue Previous Games -->
