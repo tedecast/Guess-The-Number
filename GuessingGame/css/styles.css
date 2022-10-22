@@ -22,9 +22,6 @@ hr {
 }
 
 #rulesButton {
-  /* padding: 20px; */
-  /* margin-top: 1rem; */
-  /* margin-left: 11.4rem; */
   padding: 25.5px;
   font-family: "Raleway", sans-serif;
   font-size: 24px;
@@ -32,33 +29,25 @@ hr {
 }
 
 #previousButton {
-  /* margin-top: 1rem; */
-  /* margin-left: 1.2rem; */
   font-family: "Raleway", sans-serif;
   font-size: 24px;
   color: whitesmoke;
 }
 
 #roundsButton {
-  /* margin-top: 1rem; */
-  /* margin-left: 1.2rem; */
   font-family: "Raleway", sans-serif;
   font-size: 24px;
   color: whitesmoke;
 }
 
 #continueButton {
-  /* margin-top: 1rem; */
-  /* margin-left: 1.2rem; */
   font-family: "Raleway", sans-serif;
   font-size: 24px;
   color: whitesmoke;
 }
 
 #beginButton {
-  /* margin-top: 2rem; */
   margin-left: 31rem;
-  /* padding: 30px; */
   font-family: "Raleway", sans-serif;
   font-size: 24px;
   color: whitesmoke;
@@ -171,11 +160,6 @@ hr {
   margin: 2px;
 }
 
-#deleteSubmit {
-  font-family: "Raleway", sans-serif;
-  /* margin-left: 5.5rem; */
-}
-
 #clearButton {
   font-family: "Raleway", sans-serif;
   font-size: 28px;
@@ -187,6 +171,7 @@ hr {
 }
 
 #enterGameButton {
+    
   font-family: "Raleway", sans-serif;
   font-size: 28px;
   position: relative;
