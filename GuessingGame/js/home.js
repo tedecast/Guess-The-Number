@@ -64,38 +64,49 @@ $("#roundsButton").click(function (event) {
 $("#enterButton").click(function (event) {
   // include if no rounds exists.
   $("#roundsError").empty();
-  let roundContents = $("#roundContents");
 
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/rounds/" + $("#gameIDSearch").val(),
-    success: function (roundArray) {
-      $.each(roundArray, function (index, round) {
-        let roundID = round.roundID;
-        let guess = round.guess;
-        let result = round.result;
-        let guessTime = round.guessTime;
-        let gameID = round.gameID;
+  if ($("#gameIDSearch").val() == "") {
+    $("#roundsError").append(
+      $("<li>")
+        .attr({ class: "list-group-item list-group-item-danger" })
+        .text("ERROR: Please enter a valid Game ID.")
+    );
+  } else {
+    $("#roundsPage").hide();
+    $("#roundResults").show();
+    let roundContents = $("#roundContents");
 
-        $(".gameIDHeader").text("Game " + gameID);
-        let row = "<tr>";
-        row += "<td>" + roundID + "</td>";
-        row += "<td>" + guess + "</td>";
-        row += "<td>" + result + "</td>";
-        row += "<td>" + guessTime + "</td>";
-        row += "</tr>";
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:8080/api/rounds/" + $("#gameIDSearch").val(),
+      success: function (roundArray) {
+        $.each(roundArray, function (index, round) {
+          let roundID = round.roundID;
+          let guess = round.guess;
+          let result = round.result;
+          let guessTime = round.guessTime;
+          let gameID = round.gameID;
 
-        roundContents.append(row);
-      });
-    },
-    error: function (result) {
-      $("#roundsError").append(
-        $("<li>")
-          .attr({ class: "list-group-item list-group-item-danger" })
-          .text("ERROR: Please enter a valid Game ID.")
-      );
-    },
-  });
+          $(".gameIDHeader").text("Game " + gameID);
+          let row = "<tr>";
+          row += "<td>" + roundID + "</td>";
+          row += "<td>" + guess + "</td>";
+          row += "<td>" + result + "</td>";
+          row += "<td>" + guessTime + "</td>";
+          row += "</tr>";
+
+          roundContents.append(row);
+        });
+      },
+      error: function (result) {
+        $("#roundsError").append(
+          $("<li>")
+            .attr({ class: "list-group-item list-group-item-danger" })
+            .text("ERROR: Please enter a valid Game ID.")
+        );
+      },
+    });
+  }
 });
 
 $("#backButtonThree").click(function (event) {
@@ -106,4 +117,13 @@ $("#backButtonThree").click(function (event) {
   $("#roundsPage").hide();
   $("#backButtonThree").hide();
   $("#mainPage").show();
+});
+
+$("#goBackButton").click(function (event) {
+  $(".gameIDHeader").text("");
+  $("#roundsError").empty();
+  $("#roundResults").hide();
+  $("#roundContents").empty();
+  $("#gameIDSearch").val("");
+  $("#roundsPage").show();
 });
