@@ -4,21 +4,22 @@ $("#rulesButton").click(function (event) {
   $("#errorMessages").empty();
   $("#mainPage").hide();
   $("#rulesPage").show();
-  $("#backButton").show();
+  $("#backButtonOne").show();
 });
 
-$("#backButton").click(function (event) {
+$("#backButtonOne").click(function (event) {
   $("#rulesPage").hide();
-  $("#backButton").hide();
+  $("#backButtonOne").hide();
   $("#previousGames").hide();
   $("#mainPage").show();
 });
 
 $("#previousButton").click(function (event) {
+  let previousRows = $("#previousRows");
+  previousRows.empty();
   $("#mainPage").hide();
   $("#previousGames").show();
-  $("#returnButton").show();
-  let previousRows = $("#previousRows");
+  $("#backButtonTwo").show();
 
   $.ajax({
     type: "GET",
@@ -46,4 +47,10 @@ $("#previousButton").click(function (event) {
       );
     },
   });
+});
+
+$("#backButtonTwo").click(function (event) {
+  $("#previousGames").hide();
+  $("#backButtonTwo").hide();
+  $("#mainPage").show();
 });
