@@ -61,7 +61,7 @@ hr {
   color: whitesmoke;
 }
 
-#returnButton {
+.back {
   float: right;
   font-size: 20px;
   font-family: "Raleway", sans-serif;

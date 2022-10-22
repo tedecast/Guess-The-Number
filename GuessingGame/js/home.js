@@ -1,28 +1,28 @@
-$(document).ready(function () {
-    loadGames();
+$(document).ready(function () {});
+
+$("#rulesButton").click(function (event) {
+  $("#errorMessages").empty();
+  $("#mainPage").hide();
+  $("#rulesPage").show();
+  $("#backButton").show();
 });
 
+$("#backButton").click(function (event) {
+  $("#rulesPage").hide();
+  $("#backButton").hide();
+  $("#previousGames").hide();
+  $("#mainPage").show();
+});
 
-$("#rulesButton").click(function(event){
-    $("#errorMessages").empty();
-    $("#mainPage").hide();
-    $("#rulesPage").show();
-    $("#returnButton").show();
-})
-
-$("#returnButton").click(function(event){
-    $("#rulesPage").hide();
-    $("#returnButton").hide();
-    $("#mainPage").show();
-})
-// $("#previousButton").click(function (event) {
-function loadGames() {
-    var previousRows = $("#previousRows");
-  // Display header
+$("#previousButton").click(function (event) {
+  $("#mainPage").hide();
+  $("#previousGames").show();
+  $("#returnButton").show();
+  let previousRows = $("#previousRows");
 
   $.ajax({
-    type: 'GET',
-    url: 'http://localhost:8080/api/game',
+    type: "GET",
+    url: "http://localhost:8080/api/game",
     success: function (gameArray) {
       $.each(gameArray, function (index, game) {
         let gameID = game.gameID;
@@ -46,5 +46,4 @@ function loadGames() {
       );
     },
   });
-}
-// );
+});
