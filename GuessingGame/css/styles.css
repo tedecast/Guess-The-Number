@@ -55,14 +55,6 @@ hr {
   justify-content: center;
 }
 
-/* #rulesHeader {
-  text-align: center;
-  font-size: 60px;
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
-  color: white;
-} */
-
 #rules {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
@@ -70,32 +62,14 @@ hr {
 }
 
 #returnButton {
-  /* margin-left: 60rem;
-    margin-top: 25rem; */
   float: right;
   font-size: 20px;
   font-family: "Raleway", sans-serif;
 }
 
-/* #previousHeader {
-  text-align: center;
-  font-size: 60px;
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
-  color: white;
-} */
-
 #previousTable {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
-  color: white;
-}
-
-#roundsHeader {
-  text-align: center;
-  font-size: 60px;
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
   color: white;
 }
 
@@ -114,14 +88,6 @@ hr {
 #enterButton {
   font-family: "Raleway", sans-serif;
 }
-
-/* #continueHeader {
-  text-align: center;
-  font-size: 60px;
-  font-family: "Roboto Slab", serif;
-  font-weight: bold;
-  color: white;
-} */
 
 #selectText {
   font-family: "Raleway", sans-serif;
@@ -151,7 +117,6 @@ hr {
   font-size: 40px;
   background-color: whitesmoke;
   text-align: center;
-  /* margin-left: 5.2rem; */
 }
 
 .num {
