@@ -14,6 +14,7 @@ import com.sg.guessthenumber.models.data.service.InvalidGuessException;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,38 +28,38 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Teresa
  */
-
 @RestController
-@RequestMapping ("/api")
+@RequestMapping("/api")
+@CrossOrigin(origins = {"http://localhost:8080", "http://127.0.0.1:5500"})
 public class GameController {
-    
+
     @Autowired
     GameServiceLayer service;
-    
+
     @PostMapping("/begin")
     @ResponseStatus(HttpStatus.CREATED)
-    public int beginGame(){
+    public int beginGame() {
         return this.service.beginGame();
     }
-    
+
     @PostMapping("/guess")
-    public Round makeGuess(@RequestBody Round round) throws FinishedGameException,InvalidGameIDException, InvalidGuessException{
+    public Round makeGuess(@RequestBody Round round) throws FinishedGameException, InvalidGameIDException, InvalidGuessException {
         return this.service.makeGuess(round);
     }
-    
+
     @GetMapping("/game")
     public List<Game> getAllGames() {
         return this.service.getAllGames();
     }
-    
+
     @RequestMapping(value = "/game/{gameid}", method = RequestMethod.GET)
     public Game getGameByID(@PathVariable("gameid") int gameID) throws InvalidGameIDException {
         return this.service.getGameByID(gameID);
     }
-    
+
     @RequestMapping(value = "/rounds/{gameid}", method = RequestMethod.GET)
-    public List<Round> getRoundsByID(@PathVariable ("gameid") int gameID) throws InvalidGameIDException{
+    public List<Round> getRoundsByID(@PathVariable("gameid") int gameID) throws InvalidGameIDException {
         return this.service.getAllRoundsByGameID(gameID);
     }
-    
+
 }
