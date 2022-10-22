@@ -89,18 +89,19 @@
         </div>
 
         <!-- Rounds by Game ID -->
-        <div id="roundSearch">
+        <div id="roundsPage" style="display:none">
             <h1 id="titleHeader">Rounds By Game ID</h1>
             <hr>
             <div class="row md-12" id="roundsByGameID">
                 <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game
                     ID:</label>
 
-
                 <input type="text" class="form-control col-2 p-4" id="gameIDSearch" placeholder="Game ID" required>
 
                 <button class="btn btn-info btn-md ml-2 mb-1" type="button" id="enterButton">Enter</button>
             </div>
+            <button class="back btn btn-danger btn-lg" type="button" id="backButtonThree">Back To
+                Main</button>
             <table id="roundTable" class="table">
                 <thead>
                     <tr>
@@ -113,6 +114,7 @@
                 <!-- Round Contents -->
                 <tbody id="roundContents"></tbody>
             </table>
+            <button class="back btn btn-danger btn-lg" type="button" id="goBackButton">Go Back</button>
         </div>
 
         <!-- Continue Previous Games -->
