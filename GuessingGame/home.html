@@ -26,11 +26,11 @@
     <div class="container">
 
         <!-- Main Page -->
-        <h1 id="mainTitle">Guess The Number</h1>
-        <hr>
-        <ul class="list-group" id="errormessages"></ul>
+        <div id="mainPage">
+            <h1 id="titleHeader">Guess The Number</h1>
+            <hr>
+            <ul class="list-group" id="errormessages"></ul>
 
-        <div>
             <div id="mainFlex">
                 <button class="btn btn-outline-info btn-lg mr-3" type="button" id="rulesButton">
                     Rules
@@ -45,14 +45,11 @@
             </div>
 
             <button class="btn btn-outline-info btn-lg mt-3" id="beginButton">Begin <br>A New Game</button>
-
-            <button class="btn btn-danger btn-lg" type="button" id="returnButton">Return Back To Main</button>
         </div>
 
-
         <!-- Rules Page -->
-        <div>
-            <h1 id="rulesHeader">Rules</h1>
+        <div id="rulesPage" style="display:none">
+            <h1 id="titleHeader">Rules</h1>
             <hr>
 
             <div id="rules">
@@ -70,10 +67,12 @@
                 </p>
             </div>
         </div>
+        <button class="btn btn-danger btn-lg" type="button" id="returnButton" style="display:none">Return Back<br> To
+            Main</button>
 
         <!-- Previous Games Page -->
         <div id="previousGames">
-            <h1 id="previousHeader">Previous Games</h1>
+            <h1 id="titleHeader">Previous Games</h1>
             <hr>
             <table id="previousTable" class="table">
                 <thead>
@@ -90,7 +89,7 @@
 
         <!-- Rounds by Game ID -->
         <div id="roundSearch">
-            <h1 id="roundsHeader">Rounds By Game ID</h1>
+            <h1 id="titleHeader">Rounds By Game ID</h1>
             <hr>
             <div class="row md-12" id="roundsByGameID">
                 <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game
@@ -117,7 +116,7 @@
 
         <!-- Continue Previous Games -->
         <div>
-            <h1 id="continueHeader">Continue Previous Game</h1>
+            <h1 id="titleHeader">Continue Previous Game</h1>
             <hr>
             <p id="selectText">Please select a previous game from the options below.</p>
 
@@ -184,7 +183,7 @@
                     <!-- Guess Contents Go Here -->
                 </tbody>
         </div>
-        
+
     </div>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"

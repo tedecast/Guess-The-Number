@@ -4,9 +4,8 @@ body {
 hr {
   background-color: aqua;
 }
-#mainTitle {
-  margin-top: 10px;
-  margin-bottom: 10px;
+#titleHeader {
+  margin-top: 3rem;
   font-size: 60px;
   text-align: center;
   font-family: "Roboto Slab", serif;
@@ -56,20 +55,13 @@ hr {
   justify-content: center;
 }
 
-#returnButton {
-  margin-left: 60rem;
-  margin-top: 25rem;
-  font-size: 20px;
-  font-family: "Raleway", sans-serif;
-}
-
-#rulesHeader {
+/* #rulesHeader {
   text-align: center;
   font-size: 60px;
   font-family: "Roboto Slab", serif;
   font-weight: bold;
   color: white;
-}
+} */
 
 #rules {
   font-family: "Raleway", sans-serif;
@@ -77,13 +69,21 @@ hr {
   color: whitesmoke;
 }
 
-#previousHeader {
+#returnButton {
+  /* margin-left: 60rem;
+    margin-top: 25rem; */
+  float: right;
+  font-size: 20px;
+  font-family: "Raleway", sans-serif;
+}
+
+/* #previousHeader {
   text-align: center;
   font-size: 60px;
   font-family: "Roboto Slab", serif;
   font-weight: bold;
   color: white;
-}
+} */
 
 #previousTable {
   font-family: "Raleway", sans-serif;
@@ -115,13 +115,13 @@ hr {
   font-family: "Raleway", sans-serif;
 }
 
-#continueHeader {
+/* #continueHeader {
   text-align: center;
   font-size: 60px;
   font-family: "Roboto Slab", serif;
   font-weight: bold;
   color: white;
-}
+} */
 
 #selectText {
   font-family: "Raleway", sans-serif;
@@ -171,7 +171,6 @@ hr {
 }
 
 #enterGameButton {
-    
   font-family: "Raleway", sans-serif;
   font-size: 28px;
   position: relative;
@@ -196,7 +195,7 @@ hr {
 }
 
 #roundTable {
-    font-family: "Raleway", sans-serif;
-    font-size: 30px;
-    color: white;
-  }
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: white;
+}

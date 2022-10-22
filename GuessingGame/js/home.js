@@ -2,6 +2,19 @@ $(document).ready(function () {
     loadGames();
 });
 
+
+$("#rulesButton").click(function(event){
+    $("#errorMessages").empty();
+    $("#mainPage").hide();
+    $("#rulesPage").show();
+    $("#returnButton").show();
+})
+
+$("#returnButton").click(function(event){
+    $("#rulesPage").hide();
+    $("#returnButton").hide();
+    $("#mainPage").show();
+})
 // $("#previousButton").click(function (event) {
 function loadGames() {
     var previousRows = $("#previousRows");
