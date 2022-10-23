@@ -139,6 +139,9 @@ $("#goBackButton").click(function (event) {
 $("#continueButton").click(function (event) {
   $("#continueMessages").empty();
   $("#continueRows").empty();
+  $("#mainPage").hide();
+  $("#continuePage").show();
+  $("#backButtonFour").show();
 
   $.ajax({
     type: "GET",
@@ -163,13 +166,18 @@ $("#continueButton").click(function (event) {
   });
 });
 
+$("#backButtonFour").click(function (event) {
+  $("#continueMessages").empty();
+  $("#continueRows").empty();
+  $("#continuePage").hide();
+  $("#backButtonFour").hide();
+  $("#mainPage").show();
+});
+
 function continueGame(gameID) {
   $.ajax({
-    type: "GET", 
-    url: "http://localhost:8080/api/game" + gameID, 
-    success: function (game, status){
-
-    }
-  })
-
+    type: "GET",
+    url: "http://localhost:8080/api/game" + gameID,
+    success: function (game, status) {},
+  });
 }
