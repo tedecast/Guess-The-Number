@@ -156,7 +156,7 @@ $("#continueButton").click(function (event) {
         } else {
           let row = "<tr>";
           row +=
-            '<td><a href="#" onclick="continueGame(' +
+            '<td><a href="#" class="gameLink" onclick="continueGame(' +
             gameID +
             ')">' +
             gameID +
@@ -223,3 +223,19 @@ $("#backButtonFive").click(function (event) {
     $("#mainPage").show();
   }
 });
+
+function numFunction(event) {
+  if (
+    event.key == "0" ||
+    event.key == "1" ||
+    event.key == "2" ||
+    event.key == "3" ||
+    event.key == "4" ||
+    event.key == "5" ||
+    event.key == "6" ||
+    event.key == "7" ||
+    event.key == "8" ||
+    event.key == "9"
+  ) {
+  }
+}

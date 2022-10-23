@@ -45,6 +45,9 @@ hr {
   color: whitesmoke;
 }
 
+.gameLink {
+    color: aqua;
+}
 #beginButton {
   margin-left: 31rem;
   font-family: "Raleway", sans-serif;
@@ -121,10 +124,6 @@ hr {
   font-size: 40px;
   color: whitesmoke;
 }
-
-/* #guessingGame {
-  display: flex;
-} */
 
 #guessInput {
   font-size: 40px;
