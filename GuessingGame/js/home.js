@@ -61,6 +61,7 @@ $("#roundsButton").click(function (event) {
   $("#backButtonThree").show();
 });
 
+
 $("#enterButton").click(function (event) {
   // include if no rounds exists.
   $("#roundsError").empty();
@@ -102,7 +103,7 @@ $("#enterButton").click(function (event) {
             $("#roundsError").append(
                 $("<li>")
                   .attr({ class: "list-group-item list-group-item-danger" })
-                  .text("ERROR: Please enter a valid Game ID.")
+                  .text("ERROR: No Rounds exists. Please try again.")
               );
         }
       },
