@@ -160,14 +160,14 @@ hr {
 
 #guessTable {
   display: block;
-  height: 400px;
-  width: 600px;
+  height: 38.5rem;
+  width: 49rem;
   overflow-y: scroll;
-  font-size: 35px;
+  font-size: 30px;
   font-family: "Raleway", sans-serif;
   color: whitesmoke;
   text-align: center;
   position: relative;
-  left: 32rem;
-  top: -39rem;
+  left: 20.4rem;
+  top: -38.5rem;
 }

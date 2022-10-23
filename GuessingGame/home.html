@@ -112,7 +112,7 @@
             <table id="roundTable" class="table">
                 <thead>
                     <tr>
-                        <th width="25%">Round</th>
+                        <th width="25%">Round ID</th>
                         <th width="25%">Guess</th>
                         <th width="25%">Result</th>
                         <th width="25%">Guess Time</th>
@@ -147,10 +147,11 @@
 
         <!-- Guess The Number Game-->
         <div class="guessingGame">
-            <h1 id="titleHeader" class="gameIDHeader"></h1>
+            <h1 id="titleHeader" class="gameIDHeaderTwo"></h1>
             <hr>
-            <input id="guessInput" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
+            <ul class="list-group text-center mb-3" id="guessError"></ul>
 
+            <input id="guessInput" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
 
             <div>
                 <button onclick="dis('0')" onkeydown="myFunction(event)" class="num btn-outline-info btn-lg"
@@ -189,7 +190,7 @@
             <table id="guessTable" class="table table-bordered">
                 <thead>
                     <tr>
-                        <th width="20%">Round</th>
+                        <th width="20%">Round ID</th>
                         <th width="35%">Guess</th>
                         <th width="45%">Result</th>
                     </tr>

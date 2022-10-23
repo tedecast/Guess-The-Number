@@ -155,8 +155,12 @@ $("#continueButton").click(function (event) {
           // do nothing..
         } else {
           let row = "<tr>";
-          row += '<td><a href="#" onclick="continueGame(' + gameID;
-          row += ')">' + gameID + "</a></td>";
+          row +=
+            '<td><a href="#" onclick="continueGame(' +
+            gameID +
+            ')">' +
+            gameID +
+            "</a></td>";
           row += "</tr>";
 
           $("#continueRows").append(row);
@@ -177,7 +181,30 @@ $("#backButtonFour").click(function (event) {
 function continueGame(gameID) {
   $.ajax({
     type: "GET",
-    url: "http://localhost:8080/api/game" + gameID,
-    success: function (game, status) {},
+    url: "http://localhost:8080/api/rounds/" + gameID,
+    success: function (roundArray) {
+      $.each(roundArray, function (index, round) {
+        $("gameIDHeaderTwo").val("Game " + round.gameID);
+
+        let roundID = round.roundID;
+        let guess = round.guess;
+        let result = round.result;
+
+        let row = "<tr>";
+        row += "<td>" + roundID + "</td>";
+        row += "<td>" + guess + "</td>";
+        row += "<td>" + result + "</td>";
+        row += "</tr>";
+
+        $("#guessRows").append(row);
+      });
+    },
+    error: function () {
+      $("#guessError").append(
+        $("<li>")
+          .attr({ class: "list-group-item list-group-item-danger" })
+          .text("ERROR: Please enter a valid Game ID.")
+      );
+    },
   });
 }
