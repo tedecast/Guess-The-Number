@@ -29,7 +29,7 @@
         <div id="mainPage">
             <h1 id="titleHeader">Guess The Number</h1>
             <hr>
-            <ul class="list-group text-center" id="errormessages"></ul>
+            <ul class="list-group text-center" id="errorMessages"></ul>
 
             <div id="mainFlex">
                 <button class="btn btn-outline-info btn-lg mr-3" type="button" id="rulesButton">
@@ -104,8 +104,6 @@
             </div>
             <button class="back btn btn-danger btn-lg" type="button" id="backButtonThree">Back To
                 Main</button>
-
-
         </div>
         <!-- Round Results -->
         <div id="roundResults" style="display:none">
@@ -125,13 +123,16 @@
             </table>
             <button class="back btn btn-danger btn-lg" type="button" id="goBackButton">Go Back</button>
         </div>
+
         <!-- Continue Previous Games -->
-        <div>
+        <div id="continuePage">
             <h1 id="titleHeader">Continue Previous Game</h1>
             <hr>
-            <p id="selectText">Please select a previous game from the options below.</p>
+            <ul class="list-group text-center" id="continueMessages"></ul>
 
-            <table id="continueTable" class="table table-bordered col-2 text-center">
+            <p id="selectText">Please select a Game ID from the options below.</p>
+
+            <table id="continueTable" class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th>Game ID</th>
@@ -140,6 +141,8 @@
                 <!-- Previous Games Contents -->
                 <tbody id="continueRows"></tbody>
             </table>
+            <button class="back btn btn-danger btn-lg" type="button" id="backButtonFour">Back To
+                Main</button>
         </div>
 
         <!-- Guess The Number Game-->

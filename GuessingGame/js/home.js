@@ -61,9 +61,9 @@ $("#roundsButton").click(function (event) {
   $("#backButtonThree").show();
 });
 
-
 $("#enterButton").click(function (event) {
   // include if no rounds exists.
+  // include if no GameID exits. Enter a valid.
   $("#roundsError").empty();
 
   if ($("#gameIDSearch").val() == "") {
@@ -78,10 +78,9 @@ $("#enterButton").click(function (event) {
       type: "GET",
       url: "http://localhost:8080/api/rounds/" + $("#gameIDSearch").val(),
       success: function (roundArray) {
-
         if (roundArray.length > 0) {
-            $("#roundsPage").hide();
-            $("#roundResults").show();
+          $("#roundsPage").hide();
+          $("#roundResults").show();
           $.each(roundArray, function (index, round) {
             let roundID = round.roundID;
             let guess = round.guess;
@@ -100,11 +99,11 @@ $("#enterButton").click(function (event) {
             roundContents.append(row);
           });
         } else {
-            $("#roundsError").append(
-                $("<li>")
-                  .attr({ class: "list-group-item list-group-item-danger" })
-                  .text("ERROR: No Rounds exists. Please try again.")
-              );
+          $("#roundsError").append(
+            $("<li>")
+              .attr({ class: "list-group-item list-group-item-danger" })
+              .text("ERROR: No Rounds exists. Please try again.")
+          );
         }
       },
       error: function (result) {
@@ -135,4 +134,32 @@ $("#goBackButton").click(function (event) {
   $("#roundContents").empty();
   $("#gameIDSearch").val("");
   $("#roundsPage").show();
+});
+
+$("#continueButton").click(function (event) {
+  $("#continueMessages").empty();
+  $("#continueRows").empty();
+
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:8080/api/game",
+    success: function (continueArray) {
+      $.each(continueArray, function (index, game) {
+        let gameID = game.gameID;
+        let gameStatus = game.gameStatus;
+
+        if(gameStatus == "FINISHED"){
+            // do nothing..
+        } else {
+            let row = "<tr>";
+            row += '<td><a href="#" onclick="continueGame(' + gameID;
+            row += ')">' + gameID + '</a></td>';
+            row += "</tr>";
+
+            $("#continueRows").append(row);
+        }
+
+      });
+    },
+  });
 });
