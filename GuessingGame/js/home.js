@@ -179,12 +179,15 @@ $("#backButtonFour").click(function (event) {
 });
 
 function continueGame(gameID) {
+  $("#guessRows").empty();
+  $("#backButtonFive").show();
+
   $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/rounds/" + gameID,
     success: function (roundArray) {
       $.each(roundArray, function (index, round) {
-        $("gameIDHeaderTwo").val("Game " + round.gameID);
+        $(".gameIDHeaderTwo").text("Game " + round.gameID);
 
         let roundID = round.roundID;
         let guess = round.guess;
@@ -208,3 +211,14 @@ function continueGame(gameID) {
     },
   });
 }
+
+$("#backButtonFive").click(function (event) {
+  let confirm = window.confirm("Are you sure you want to exit this game?");
+  if (confirm == true) {
+    $("#guessEror").empty();
+    $("#guessRows").empty();
+    $("#guessingGame").hide();
+    $("#backButtonFive").hide();
+    $("#mainPage").show();
+  }
+});
