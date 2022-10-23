@@ -162,7 +162,6 @@ $("#continueButton").click(function (event) {
             gameID +
             "</a></td>";
           row += "</tr>";
-
           $("#continueRows").append(row);
         }
       });
@@ -179,9 +178,11 @@ $("#backButtonFour").click(function (event) {
 });
 
 function continueGame(gameID) {
+  $("#continuePage").hide();
+  $("#backButtonFour").hide();
+  $("#guessingGame").show();
   $("#guessRows").empty();
   $("#backButtonFive").show();
-
   $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/rounds/" + gameID,
