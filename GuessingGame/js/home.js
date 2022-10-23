@@ -148,18 +148,28 @@ $("#continueButton").click(function (event) {
         let gameID = game.gameID;
         let gameStatus = game.gameStatus;
 
-        if(gameStatus == "FINISHED"){
-            // do nothing..
+        if (gameStatus == "FINISHED") {
+          // do nothing..
         } else {
-            let row = "<tr>";
-            row += '<td><a href="#" onclick="continueGame(' + gameID;
-            row += ')">' + gameID + '</a></td>';
-            row += "</tr>";
+          let row = "<tr>";
+          row += '<td><a href="#" onclick="continueGame(' + gameID;
+          row += ')">' + gameID + "</a></td>";
+          row += "</tr>";
 
-            $("#continueRows").append(row);
+          $("#continueRows").append(row);
         }
-
       });
     },
   });
 });
+
+function continueGame(gameID) {
+  $.ajax({
+    type: "GET", 
+    url: "http://localhost:8080/api/game" + gameID, 
+    success: function (game, status){
+
+    }
+  })
+
+}
