@@ -72,31 +72,39 @@ $("#enterButton").click(function (event) {
         .text("ERROR: Please enter a valid Game ID.")
     );
   } else {
-    $("#roundsPage").hide();
-    $("#roundResults").show();
     let roundContents = $("#roundContents");
-
     $.ajax({
       type: "GET",
       url: "http://localhost:8080/api/rounds/" + $("#gameIDSearch").val(),
       success: function (roundArray) {
-        $.each(roundArray, function (index, round) {
-          let roundID = round.roundID;
-          let guess = round.guess;
-          let result = round.result;
-          let guessTime = round.guessTime;
-          let gameID = round.gameID;
 
-          $(".gameIDHeader").text("Game " + gameID);
-          let row = "<tr>";
-          row += "<td>" + roundID + "</td>";
-          row += "<td>" + guess + "</td>";
-          row += "<td>" + result + "</td>";
-          row += "<td>" + guessTime + "</td>";
-          row += "</tr>";
+        if (roundArray.length > 0) {
+            $("#roundsPage").hide();
+            $("#roundResults").show();
+          $.each(roundArray, function (index, round) {
+            let roundID = round.roundID;
+            let guess = round.guess;
+            let result = round.result;
+            let guessTime = round.guessTime;
+            let gameID = round.gameID;
 
-          roundContents.append(row);
-        });
+            $(".gameIDHeader").text("Game " + gameID);
+            let row = "<tr>";
+            row += "<td>" + roundID + "</td>";
+            row += "<td>" + guess + "</td>";
+            row += "<td>" + result + "</td>";
+            row += "<td>" + guessTime + "</td>";
+            row += "</tr>";
+
+            roundContents.append(row);
+          });
+        } else {
+            $("#roundsError").append(
+                $("<li>")
+                  .attr({ class: "list-group-item list-group-item-danger" })
+                  .text("ERROR: Please enter a valid Game ID.")
+              );
+        }
       },
       error: function (result) {
         $("#roundsError").append(
