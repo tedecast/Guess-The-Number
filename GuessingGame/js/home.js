@@ -1,6 +1,6 @@
 $(document).ready(function () {});
 
-$("#rulesButton").click(function (event) {
+$(".rules-button").click(function (event) {
   $("#errorMessages").empty();
   $("#mainPage").hide();
   $("#rulesPage").show();
@@ -14,7 +14,7 @@ $("#backButtonOne").click(function (event) {
   $("#mainPage").show();
 });
 
-$("#previousButton").click(function (event) {
+$(".previous-button").click(function (event) {
   let previousRows = $("#previousRows");
   previousRows.empty();
   $("#mainPage").hide();
@@ -55,7 +55,7 @@ $("#backButtonTwo").click(function (event) {
   $("#mainPage").show();
 });
 
-$("#roundsButton").click(function (event) {
+$(".rounds-button").click(function (event) {
   $("#mainPage").hide();
   $("#roundsPage").show();
   $("#backButtonThree").show();
@@ -136,7 +136,7 @@ $("#goBackButton").click(function (event) {
   $("#roundsPage").show();
 });
 
-$("#continueButton").click(function (event) {
+$(".continue-button").click(function (event) {
   $("#continueMessages").empty();
   $("#continueRows").empty();
   $("#mainPage").hide();
