@@ -57,7 +57,7 @@
             <h1 class="title-header">Rules</h1>
             <hr>
 
-            <div id="rules">
+            <div class="rules">
                 <p id="ruleOne">1) You can guess as many times as you'd like until you guess the correct number.</p>
                 <br>
                 <p id="ruleTwo">2) Your guess must be a 4 digit number.</p>
@@ -79,7 +79,7 @@
         <div id="previousGames" style="display:none">
             <h1 class="title-header">Previous Games</h1>
             <hr>
-            <table id="previousTable" class="table">
+            <table id="previous-table" class="table">
                 <thead>
                     <tr>
                         <th width="30%">Game ID</th>
@@ -101,10 +101,10 @@
             <ul class="list-group text-center mb-3" id="roundsError"></ul>
 
             <div class="row md-12" id="roundsByGameID">
-                <label for="gameIDSearch" class="col-md-4 control-label" id="idLabel">Please Enter a Game
+                <label for="game-id-search" class="id-label col-md-4 control-label">Please Enter a Game
                     ID:</label>
 
-                <input type="text" class="form-control col-2 p-4" id="gameIDSearch" placeholder="Game ID" required>
+                <input type="text" class="form-control col-2 p-4" id="game-id-search" placeholder="Game ID" required>
 
                 <button class="btn btn-info btn-md ml-2 mb-1" type="button" id="enterButton">Enter</button>
             </div>
@@ -113,7 +113,7 @@
         </div>
         <!-- Round Results -->
         <div id="roundResults" style="display:none">
-            <h1 class="title-header" class="gameIDHeader"></h1>
+            <h1 class="title-header" id="game-id-header"></h1>
             <hr>
             <table id="roundTable" class="table">
                 <thead>
@@ -136,9 +136,9 @@
             <hr>
             <ul class="list-group text-center" id="continueMessages"></ul>
 
-            <p id="selectText">Please select a Game ID from the options below.</p>
+            <p class="select-text">Please select a Game ID from the options below.</p>
 
-            <table id="continueTable" class="table table-bordered text-center">
+            <table id="continue-table" class="table table-bordered text-center">
                 <thead>
                     <tr>
                         <th>Game ID</th>
@@ -152,11 +152,11 @@
 
         <!-- Guess The Number Game-->
         <div id="guessingGame" style="display:none">
-            <h1 class="title-header" class="gameIDHeaderTwo"></h1>
+            <h1 class="title-header" id="game-id-header-two"></h1>
             <hr>
             <ul class="list-group text-center mb-3" id="guessError"></ul>
 
-            <input id="guessInput" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
+            <input id="guess-input" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
 
             <div>
                 <button onclick="dis('0')" onkeydown="numFunction(event)" class="num btn-outline-info btn-lg"
@@ -189,10 +189,10 @@
                 <button type="button" onclick="dis('9')" onkeydown="numFunction(event)"
                     class="num btn-outline-info btn-lg">9</button>
                 <button type="button" class="btn btn-danger btn-lg mt-2 mr-3" type="button"
-                    id="clearButton">Clear</button>
-                <button type="button" class="btn btn-info btn-lg mt-2" type="button" id="enterGameButton">Enter</button>
+                    id="clear-button">Clear</button>
+                <button type="button" class="btn btn-info btn-lg mt-2" type="button" id="enter-game-button">Enter</button>
             </div>
-            <table id="guessTable" class="table table-bordered">
+            <table id="guess-table" class="table table-bordered">
                 <thead>
                     <tr>
                         <th width="20%">Round ID</th>

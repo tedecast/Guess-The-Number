@@ -1,4 +1,4 @@
-#continueTable {
+#continue-table {
   display: block;
   overflow-y: scroll;
   font-family: "Raleway", sans-serif;
@@ -8,14 +8,13 @@
   width: 11.6rem;
 }
 
-.gameLink {
+.game-link {
   color: aqua;
 }
 
-#selectText {
-    font-family: "Raleway", sans-serif;
-    font-size: 30px;
-    color: white;
-    text-align: center;
-  }
-  
+.select-text {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}

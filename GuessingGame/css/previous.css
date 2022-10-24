@@ -1,4 +1,4 @@
-#previousTable {
+#previous-table {
   display: block;
   overflow-y: scroll;
   font-family: "Raleway", sans-serif;
@@ -6,7 +6,7 @@
   color: white;
 }
 
-#idLabel {
+.id-label {
   font-family: "Raleway", sans-serif;
   font-size: 30px;
   color: white;

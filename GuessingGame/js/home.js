@@ -66,7 +66,7 @@ $("#enterButton").click(function (event) {
   // include if no GameID exits. Enter a valid.
   $("#roundsError").empty();
 
-  if ($("#gameIDSearch").val() == "") {
+  if ($("#game-id-search").val() == "") {
     $("#roundsError").append(
       $("<li>")
         .attr({ class: "list-group-item list-group-item-danger" })
@@ -76,7 +76,7 @@ $("#enterButton").click(function (event) {
     let roundContents = $("#roundContents");
     $.ajax({
       type: "GET",
-      url: "http://localhost:8080/api/rounds/" + $("#gameIDSearch").val(),
+      url: "http://localhost:8080/api/rounds/" + $("#game-id-search").val(),
       success: function (roundArray) {
         if (roundArray.length > 0) {
           $("#roundsPage").hide();
@@ -88,7 +88,7 @@ $("#enterButton").click(function (event) {
             let guessTime = round.guessTime;
             let gameID = round.gameID;
 
-            $(".gameIDHeader").text("Game " + gameID);
+            $("#game-id-header").text("Game " + gameID);
             let row = "<tr>";
             row += "<td>" + roundID + "</td>";
             row += "<td>" + guess + "</td>";
@@ -118,21 +118,21 @@ $("#enterButton").click(function (event) {
 });
 
 $("#backButtonThree").click(function (event) {
-  $(".gameIDHeader").text("");
+  $(".game-id-header").text("");
   $("#roundsError").empty();
   $("#roundContents").empty();
-  $("#gameIDSearch").val("");
+  $("#game-id-search").val("");
   $("#roundsPage").hide();
   $("#backButtonThree").hide();
   $("#mainPage").show();
 });
 
 $("#goBackButton").click(function (event) {
-  $(".gameIDHeader").text("");
+  $(".game-id-header").text("");
   $("#roundsError").empty();
   $("#roundResults").hide();
   $("#roundContents").empty();
-  $("#gameIDSearch").val("");
+  $("#game-id-search").val("");
   $("#roundsPage").show();
 });
 
@@ -156,7 +156,7 @@ $(".continue-button").click(function (event) {
         } else {
           let row = "<tr>";
           row +=
-            '<td><a href="#" class="gameLink" onclick="continueGame(' +
+            '<td><a href="#" class="game-link" onclick="continueGame(' +
             gameID +
             ')">' +
             gameID +
@@ -188,7 +188,7 @@ function continueGame(gameID) {
     url: "http://localhost:8080/api/rounds/" + gameID,
     success: function (roundArray) {
       $.each(roundArray, function (index, round) {
-        $(".gameIDHeaderTwo").text("Game " + round.gameID);
+        $("#game-id-header-two").text("Game " + round.gameID);
 
         let roundID = round.roundID;
         let guess = round.guess;

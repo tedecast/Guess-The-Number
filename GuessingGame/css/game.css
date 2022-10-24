@@ -1,4 +1,4 @@
-#guessInput {
+#guess-input {
   font-size: 40px;
   background-color: whitesmoke;
   text-align: center;
@@ -10,7 +10,7 @@
   margin: 2px;
 }
 
-#clearButton {
+#clear-button {
   font-family: "Raleway", sans-serif;
   font-size: 28px;
   position: relative;
@@ -20,7 +20,7 @@
   left: 2px;
 }
 
-#enterGameButton {
+#enter-game-button {
   font-family: "Raleway", sans-serif;
   font-size: 28px;
   position: relative;
@@ -30,7 +30,7 @@
   right: 12.4rem;
 }
 
-#guessTable {
+#guess-table {
   display: block;
   height: 38.5rem;
   width: 49rem;
