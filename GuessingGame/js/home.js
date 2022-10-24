@@ -2,22 +2,22 @@ $(document).ready(function () {});
 
 $(".rules-button").click(function (event) {
   $("#errorMessages").empty();
-  $("#mainPage").hide();
-  $("#rulesPage").show();
-  $("#backButtonOne").show();
+  $("#main-page").hide();
+  $("#rules-page").show();
+  $("#back-button-one").show();
 });
 
-$("#backButtonOne").click(function (event) {
-  $("#rulesPage").hide();
-  $("#backButtonOne").hide();
+$("#back-button-one").click(function (event) {
+  $("#rules-page").hide();
+  $("#back-button-one").hide();
   $("#previousGames").hide();
-  $("#mainPage").show();
+  $("#main-page").show();
 });
 
 $(".previous-button").click(function (event) {
   let previousRows = $("#previousRows");
   previousRows.empty();
-  $("#mainPage").hide();
+  $("#main-page").hide();
   $("#previousGames").show();
   $("#backButtonTwo").show();
 
@@ -52,11 +52,11 @@ $(".previous-button").click(function (event) {
 $("#backButtonTwo").click(function (event) {
   $("#previousGames").hide();
   $("#backButtonTwo").hide();
-  $("#mainPage").show();
+  $("#main-page").show();
 });
 
 $(".rounds-button").click(function (event) {
-  $("#mainPage").hide();
+  $("#main-page").hide();
   $("#roundsPage").show();
   $("#backButtonThree").show();
 });
@@ -124,7 +124,7 @@ $("#backButtonThree").click(function (event) {
   $("#game-id-search").val("");
   $("#roundsPage").hide();
   $("#backButtonThree").hide();
-  $("#mainPage").show();
+  $("#main-page").show();
 });
 
 $("#goBackButton").click(function (event) {
@@ -139,7 +139,7 @@ $("#goBackButton").click(function (event) {
 $(".continue-button").click(function (event) {
   $("#continueMessages").empty();
   $("#continueRows").empty();
-  $("#mainPage").hide();
+  $("#main-page").hide();
   $("#continuePage").show();
   $("#backButtonFour").show();
 
@@ -174,7 +174,7 @@ $("#backButtonFour").click(function (event) {
   $("#continueRows").empty();
   $("#continuePage").hide();
   $("#backButtonFour").hide();
-  $("#mainPage").show();
+  $("#main-page").show();
 });
 
 function continueGame(gameID) {
@@ -220,7 +220,7 @@ $("#backButtonFive").click(function (event) {
     $("#guessRows").empty();
     $("#guessingGame").hide();
     $("#backButtonFive").hide();
-    $("#mainPage").show();
+    $("#main-page").show();
   }
 });
 
