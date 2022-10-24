@@ -1,0 +1,56 @@
+body {
+  background-color: rgb(0, 0, 0);
+}
+hr {
+  background-color: aqua;
+}
+#titleHeader {
+  margin-top: 3rem;
+  font-size: 60px;
+  text-align: center;
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  color: white;
+}
+
+#mainFlex {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#rulesButton {
+  padding: 25.5px;
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: whitesmoke;
+}
+
+#previousButton {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: whitesmoke;
+}
+
+#roundsButton {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: whitesmoke;
+}
+
+#continueButton {
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: whitesmoke;
+}
+
+#beginButton {
+  margin-left: 31rem;
+  font-family: "Raleway", sans-serif;
+  font-size: 24px;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

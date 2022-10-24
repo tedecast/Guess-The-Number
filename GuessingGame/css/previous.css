@@ -1,0 +1,14 @@
+#previousTable {
+  display: block;
+  overflow-y: scroll;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: white;
+}
+
+#idLabel {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: white;
+  margin-left: 15rem;
+}

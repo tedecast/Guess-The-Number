@@ -1,0 +1,11 @@
+#rules {
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: whitesmoke;
+}
+
+.back {
+  float: right;
+  font-size: 20px;
+  font-family: "Raleway", sans-serif;
+}

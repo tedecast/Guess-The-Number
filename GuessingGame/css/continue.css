@@ -1,0 +1,21 @@
+#continueTable {
+  display: block;
+  overflow-y: scroll;
+  font-family: "Raleway", sans-serif;
+  font-size: 35px;
+  color: white;
+  margin-left: 29rem;
+  width: 11.6rem;
+}
+
+.gameLink {
+  color: aqua;
+}
+
+#selectText {
+    font-family: "Raleway", sans-serif;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+  }
+  

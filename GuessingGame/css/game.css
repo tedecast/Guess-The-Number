@@ -1,0 +1,45 @@
+#guessInput {
+  font-size: 40px;
+  background-color: whitesmoke;
+  text-align: center;
+}
+
+.num {
+  font-size: 40px;
+  padding: 30px;
+  margin: 2px;
+}
+
+#clearButton {
+  font-family: "Raleway", sans-serif;
+  font-size: 28px;
+  position: relative;
+  padding-left: 55px;
+  padding-right: 55px;
+  top: -3rem;
+  left: 2px;
+}
+
+#enterGameButton {
+  font-family: "Raleway", sans-serif;
+  font-size: 28px;
+  position: relative;
+  padding-left: 54.3px;
+  padding-right: 54.3px;
+  top: 1rem;
+  right: 12.4rem;
+}
+
+#guessTable {
+  display: block;
+  height: 38.5rem;
+  width: 49rem;
+  overflow-y: scroll;
+  font-size: 30px;
+  font-family: "Raleway", sans-serif;
+  color: whitesmoke;
+  text-align: center;
+  position: relative;
+  left: 20.4rem;
+  top: -38.5rem;
+}

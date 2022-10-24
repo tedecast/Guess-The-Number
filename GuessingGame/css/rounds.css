@@ -1,0 +1,16 @@
+#gameIDSearch {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+}
+
+#enterButton {
+  font-family: "Raleway", sans-serif;
+}
+
+#roundTable {
+  display: block;
+  overflow-y: scroll;
+  font-family: "Raleway", sans-serif;
+  font-size: 30px;
+  color: white;
+}
