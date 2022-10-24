@@ -10,15 +10,15 @@ $(".rules-button").click(function (event) {
 $("#back-button-one").click(function (event) {
   $("#rules-page").hide();
   $("#back-button-one").hide();
-  $("#previousGames").hide();
+  $("#previous-games").hide();
   $("#main-page").show();
 });
 
 $(".previous-button").click(function (event) {
-  let previousRows = $("#previousRows");
+  let previousRows = $("#previous-rows");
   previousRows.empty();
   $("#main-page").hide();
-  $("#previousGames").show();
+  $("#previous-games").show();
   $("#backButtonTwo").show();
 
   $.ajax({
@@ -50,7 +50,7 @@ $(".previous-button").click(function (event) {
 });
 
 $("#backButtonTwo").click(function (event) {
-  $("#previousGames").hide();
+  $("#previous-games").hide();
   $("#backButtonTwo").hide();
   $("#main-page").show();
 });
