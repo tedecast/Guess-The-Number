@@ -35,7 +35,7 @@
         <div id="main-page">
             <h1 class="title-header">Guess The Number</h1>
             <hr>
-            <ul class="list-group text-center" id="errorMessages"></ul>
+            <ul class="list-group text-center" id="error-messages"></ul>
 
             <div id="main-flex">
                 <button class="rules-button btn btn-outline-info btn-lg mr-3" type="button">
@@ -98,7 +98,7 @@
         <div id="rounds-page" style="display:none">
             <h1 class="title-header">Rounds By Game ID</h1>
             <hr>
-            <ul class="list-group text-center mb-3" id="roundsError"></ul>
+            <ul class="list-group text-center mb-3" id="rounds-error"></ul>
 
             <div class="row md-12" id="roundsByGameID">
                 <label for="game-id-search" class="id-label col-md-4 control-label">Please Enter a Game
@@ -131,10 +131,10 @@
         </div>
 
         <!-- Continue Previous Games -->
-        <div id="continuePage" style="display:none">
+        <div id="continue-page" style="display:none">
             <h1 class="title-header">Continue Previous Game</h1>
             <hr>
-            <ul class="list-group text-center" id="continueMessages"></ul>
+            <ul class="list-group text-center" id="continue-messages"></ul>
 
             <p class="select-text">Please select a Game ID from the options below.</p>
 
@@ -145,16 +145,16 @@
                     </tr>
                 </thead>
                 <!-- Previous Games Contents -->
-                <tbody id="continueRows"></tbody>
+                <tbody id="continue-rows"></tbody>
             </table>
-            <button class="back btn btn-danger btn-lg" type="button" id="backButtonFour">Back To Main</button>
+            <button class="back btn btn-danger btn-lg" type="button" id="back-button-four">Back To Main</button>
         </div>
 
         <!-- Guess The Number Game-->
-        <div id="guessingGame" style="display:none">
+        <div id="guessing-game" style="display:none">
             <h1 class="title-header" id="game-id-header-two"></h1>
             <hr>
-            <ul class="list-group text-center mb-3" id="guessError"></ul>
+            <ul class="list-group text-center mb-3" id="guess-error"></ul>
 
             <input id="guess-input" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold"></input>
 
@@ -200,10 +200,10 @@
                         <th width="45%">Result</th>
                     </tr>
                 </thead>
-                <tbody id="guessRows">
+                <tbody id="guess-rows">
                     <!-- Guess Contents Go Here -->
                 </tbody>
-                <button class="back btn btn-danger btn-lg mt-3" type="button" id="backButtonFive">Back To Main</button>
+                <button class="back btn btn-danger btn-lg mt-3" type="button" id="back-button-five">Back To Main</button>
         </div>
 
     </div>

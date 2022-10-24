@@ -1,7 +1,7 @@
 $(document).ready(function () {});
 
 $(".rules-button").click(function (event) {
-  $("#errorMessages").empty();
+  $("#error-messages").empty();
   $("#main-page").hide();
   $("#rules-page").show();
   $("#back-button-one").show();
@@ -40,7 +40,7 @@ $(".previous-button").click(function (event) {
       });
     },
     error: function () {
-      $("#errorMessages").append(
+      $("#error-messages").append(
         $("<li>")
           .attr({ class: "list-group-item list-group-item-danger" })
           .text("Error calling web service. Please try again later.")
@@ -64,10 +64,10 @@ $(".rounds-button").click(function (event) {
 $("#enter-button").click(function (event) {
   // include if no rounds exists.
   // include if no GameID exits. Enter a valid.
-  $("#roundsError").empty();
+  $("#rounds-error").empty();
 
   if ($("#game-id-search").val() == "") {
-    $("#roundsError").append(
+    $("#rounds-error").append(
       $("<li>")
         .attr({ class: "list-group-item list-group-item-danger" })
         .text("ERROR: Please enter a valid Game ID.")
@@ -99,7 +99,7 @@ $("#enter-button").click(function (event) {
             roundContents.append(row);
           });
         } else {
-          $("#roundsError").append(
+          $("#rounds-error").append(
             $("<li>")
               .attr({ class: "list-group-item list-group-item-danger" })
               .text("ERROR: No Rounds exists. Please try again.")
@@ -107,7 +107,7 @@ $("#enter-button").click(function (event) {
         }
       },
       error: function (result) {
-        $("#roundsError").append(
+        $("#rounds-error").append(
           $("<li>")
             .attr({ class: "list-group-item list-group-item-danger" })
             .text("ERROR: Please enter a valid Game ID.")
@@ -119,7 +119,7 @@ $("#enter-button").click(function (event) {
 
 $("#back-button-three").click(function (event) {
   $(".game-id-header").text("");
-  $("#roundsError").empty();
+  $("#rounds-error").empty();
   $("#round-contents").empty();
   $("#game-id-search").val("");
   $("#rounds-page").hide();
@@ -129,7 +129,7 @@ $("#back-button-three").click(function (event) {
 
 $("#go-back-button").click(function (event) {
   $(".game-id-header").text("");
-  $("#roundsError").empty();
+  $("#rounds-error").empty();
   $("#round-results").hide();
   $("#round-contents").empty();
   $("#game-id-search").val("");
@@ -137,11 +137,11 @@ $("#go-back-button").click(function (event) {
 });
 
 $(".continue-button").click(function (event) {
-  $("#continueMessages").empty();
-  $("#continueRows").empty();
+  $("#continue-messages").empty();
+  $("#continue-rows").empty();
   $("#main-page").hide();
-  $("#continuePage").show();
-  $("#backButtonFour").show();
+  $("#continue-page").show();
+  $("#back-button-four").show();
 
   $.ajax({
     type: "GET",
@@ -162,27 +162,27 @@ $(".continue-button").click(function (event) {
             gameID +
             "</a></td>";
           row += "</tr>";
-          $("#continueRows").append(row);
+          $("#continue-rows").append(row);
         }
       });
     },
   });
 });
 
-$("#backButtonFour").click(function (event) {
-  $("#continueMessages").empty();
-  $("#continueRows").empty();
-  $("#continuePage").hide();
-  $("#backButtonFour").hide();
+$("#back-button-four").click(function (event) {
+  $("#continue-messages").empty();
+  $("#continue-rows").empty();
+  $("#continue-page").hide();
+  $("#back-button-four").hide();
   $("#main-page").show();
 });
 
 function continueGame(gameID) {
-  $("#continuePage").hide();
-  $("#backButtonFour").hide();
-  $("#guessingGame").show();
-  $("#guessRows").empty();
-  $("#backButtonFive").show();
+  $("#continue-page").hide();
+  $("#back-button-four").hide();
+  $("#guessing-game").show();
+  $("#guess-rows").empty();
+  $("#back-button-five").show();
   $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/rounds/" + gameID,
@@ -200,26 +200,26 @@ function continueGame(gameID) {
         row += "<td>" + result + "</td>";
         row += "</tr>";
 
-        $("#guessRows").append(row);
+        $("#guess-rows").append(row);
       });
     },
     error: function () {
-      $("#guessError").append(
+      $("#guess-error").append(
         $("<li>")
           .attr({ class: "list-group-item list-group-item-danger" })
-          .text("ERROR: Please enter a valid Game ID.")
+          .text("Error calling web service. Please try again later.")
       );
     },
   });
 }
 
-$("#backButtonFive").click(function (event) {
+$("#back-button-five").click(function (event) {
   let confirm = window.confirm("Are you sure you want to exit this game?");
   if (confirm == true) {
     $("#guessEror").empty();
-    $("#guessRows").empty();
-    $("#guessingGame").hide();
-    $("#backButtonFive").hide();
+    $("#guess-rows").empty();
+    $("#guessing-game").hide();
+    $("#back-button-five").hide();
     $("#main-page").show();
   }
 });
