@@ -3,11 +3,11 @@
   font-size: 16px;
 }
 
-#enterButton {
+#enter-button {
   font-family: "Raleway", sans-serif;
 }
 
-#roundTable {
+#round-table {
   display: block;
   overflow-y: scroll;
   font-family: "Raleway", sans-serif;

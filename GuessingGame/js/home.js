@@ -19,7 +19,7 @@ $(".previous-button").click(function (event) {
   previousRows.empty();
   $("#main-page").hide();
   $("#previous-games").show();
-  $("#backButtonTwo").show();
+  $("#back-button-two").show();
 
   $.ajax({
     type: "GET",
@@ -49,19 +49,19 @@ $(".previous-button").click(function (event) {
   });
 });
 
-$("#backButtonTwo").click(function (event) {
+$("#back-button-two").click(function (event) {
   $("#previous-games").hide();
-  $("#backButtonTwo").hide();
+  $("#back-button-two").hide();
   $("#main-page").show();
 });
 
 $(".rounds-button").click(function (event) {
   $("#main-page").hide();
-  $("#roundsPage").show();
-  $("#backButtonThree").show();
+  $("#rounds-page").show();
+  $("#back-button-three").show();
 });
 
-$("#enterButton").click(function (event) {
+$("#enter-button").click(function (event) {
   // include if no rounds exists.
   // include if no GameID exits. Enter a valid.
   $("#roundsError").empty();
@@ -73,14 +73,14 @@ $("#enterButton").click(function (event) {
         .text("ERROR: Please enter a valid Game ID.")
     );
   } else {
-    let roundContents = $("#roundContents");
+    let roundContents = $("#round-contents");
     $.ajax({
       type: "GET",
       url: "http://localhost:8080/api/rounds/" + $("#game-id-search").val(),
       success: function (roundArray) {
         if (roundArray.length > 0) {
-          $("#roundsPage").hide();
-          $("#roundResults").show();
+          $("#rounds-page").hide();
+          $("#round-results").show();
           $.each(roundArray, function (index, round) {
             let roundID = round.roundID;
             let guess = round.guess;
@@ -117,23 +117,23 @@ $("#enterButton").click(function (event) {
   }
 });
 
-$("#backButtonThree").click(function (event) {
+$("#back-button-three").click(function (event) {
   $(".game-id-header").text("");
   $("#roundsError").empty();
-  $("#roundContents").empty();
+  $("#round-contents").empty();
   $("#game-id-search").val("");
-  $("#roundsPage").hide();
-  $("#backButtonThree").hide();
+  $("#rounds-page").hide();
+  $("#back-button-three").hide();
   $("#main-page").show();
 });
 
-$("#goBackButton").click(function (event) {
+$("#go-back-button").click(function (event) {
   $(".game-id-header").text("");
   $("#roundsError").empty();
-  $("#roundResults").hide();
-  $("#roundContents").empty();
+  $("#round-results").hide();
+  $("#round-contents").empty();
   $("#game-id-search").val("");
-  $("#roundsPage").show();
+  $("#rounds-page").show();
 });
 
 $(".continue-button").click(function (event) {
