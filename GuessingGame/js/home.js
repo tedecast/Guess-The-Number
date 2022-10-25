@@ -173,18 +173,6 @@ $("#back-button-four").click(function (event) {
   $("#main-page").show();
 });
 
-function getGameID() {
-  $.ajax({
-    type: "GET",
-    url: "http://localhost:8080/api/game",
-    success: function (gameIDArray) {
-      $.each(gameIDArray, function (index, game) {
-        let gameID = game.gameID;
-      });
-    },
-  });
-}
-
 // create as function for just the round table.
 function continueGame(gameID) {
   $("#game-id").text("Game " + gameID);
@@ -199,8 +187,6 @@ function continueGame(gameID) {
     url: "http://localhost:8080/api/rounds/" + gameID,
     success: function (roundArray) {
       $.each(roundArray, function (index, round) {
-        // need to fix this below
-
         let roundID = round.roundID;
         let guess = round.guess;
         let result = round.result;
@@ -230,7 +216,6 @@ $("#back-button-five").click(function (event) {
     $("#guess-error").hide();
     $("#guess-input").val("");
     $("#guess-rows").empty();
-    // $("#game-id").text("");
     $("#guessing-game").hide();
     $("#back-button-five").hide();
     $("#main-page").show();
@@ -283,5 +268,19 @@ $(".begin-button").click(function (event) {
   $.ajax({
     type: "POST",
     url: "http://localhost:8080/api/begin/",
+    success: function () {
+      $.ajax({
+        type: "GET",
+        url: "http://localhost:8080/api/game",
+        success: function (gameIDArray) {
+          $.each(gameIDArray, function (index, game) {
+            let gameID = game.gameID;
+            $("#game-id").text("Game " + gameID[gameID.length - 1]);
+            console.log(gameID[gameID.length - 1]);
+            console.log(gameIDArray[gameIDArray.length - 1]);
+          });
+        },
+      });
+    },
   });
 });
