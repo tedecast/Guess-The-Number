@@ -62,8 +62,6 @@ $(".rounds-button").click(function (event) {
 });
 
 $("#enter-button").click(function (event) {
-  // include if no rounds exists.
-  // include if no GameID exits. Enter a valid.
   $("#rounds-error").empty();
 
   if ($("#game-id-search").val() == "") {
@@ -188,8 +186,7 @@ function continueGame(gameID) {
     url: "http://localhost:8080/api/rounds/" + gameID,
     success: function (roundArray) {
       $.each(roundArray, function (index, round) {
-        $("#game-id-header-two").text("Game " + round.gameID);
-
+        $("#game-id").text("Game " + round.gameID);
         let roundID = round.roundID;
         let guess = round.guess;
         let result = round.result;
@@ -232,6 +229,31 @@ $(".num").each(function (i) {
   });
 });
 
-$("#clear-button").click(function (event){
-    $("#guess-input").val("");
-})
+$("#clear-button").click(function (event) {
+  $("#guess-input").val("");
+});
+
+$("#enter-game-button").click(function (event) {
+  $.ajax({
+    type: "POST",
+    url: "http://localhost:8080/api/guess/",
+    data: JSON.stringify({
+      gameID: $("#game-id")
+      .text()
+      .split(" ")[1],
+      guess: $("#guess-input").val(),
+    }),
+    contentType: "application/json",
+    success: function () {
+      $("#guess-error").empty();
+      continueGame($("#game-id").text().split(" ")[1]);
+    },
+    error: function (result) {
+        guessError(result.responseJSON.message);
+    },
+  });
+});
+
+function guessError(string){
+    $("#guess-error").text(string).attr({ class: "list-group-item list-group-item-danger text-center" });
+}

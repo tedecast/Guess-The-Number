@@ -87,7 +87,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
             }
             
             if (guess.length() != 4 || guess == null) {
-                throw new InvalidGuessException("ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.");
+                throw new InvalidGuessException("ERROR: Please try again and enter a guess of 4 valid numbers.");
             }
 
         } catch (DataAccessException ex) {
