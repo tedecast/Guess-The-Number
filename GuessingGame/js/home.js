@@ -1,5 +1,3 @@
-//$(document).ready(function () {});
-
 var errorString = "Error calling web service. Please try again later.";
 
 $(".rules-button").click(function (event) {
@@ -45,7 +43,7 @@ $(".previous-button").click(function (event) {
       $("#error-messages").append(
         $("<li>")
           .attr({ class: "list-group-item list-group-item-danger" })
-          .text("Error calling web service. Please try again later.")
+          .text(errorString)
       );
     },
   });
@@ -206,7 +204,7 @@ function continueGame(gameID) {
       $("#guess-error").append(
         $("<li>")
           .attr({ class: "list-group-item list-group-item-danger" })
-          .text("Error calling web service. Please try again later.")
+          .text(errorString)
       );
     },
   });
