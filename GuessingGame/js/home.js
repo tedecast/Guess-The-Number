@@ -148,10 +148,8 @@ $(".continue-button").click(function (event) {
       $.each(continueArray, function (index, game) {
         let gameID = game.gameID;
         let gameStatus = game.gameStatus;
-
-        if (gameStatus == "FINISHED") {
-          // do nothing..
-        } else {
+        
+        if (gameStatus == "IN PROGRESS") {
           let row = "<tr>";
           row +=
             '<td><a href="#" class="game-link" onclick="continueGame(' +

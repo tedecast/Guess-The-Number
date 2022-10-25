@@ -1,3 +1,7 @@
+#guessing-game{
+    height: 50rem;
+}
+
 #guess-input {
   font-size: 40px;
   background-color: whitesmoke;
@@ -32,7 +36,7 @@
 
 #guess-table {
   display: block;
-  height: 38.5rem;
+  height: 35rem;
   width: 49rem;
   overflow-y: scroll;
   font-size: 30px;
@@ -42,4 +46,9 @@
   position: relative;
   left: 20.4rem;
   top: -38.5rem;
+}
+
+#back-button-five{
+    position: relative;
+    top: -4rem;
 }
