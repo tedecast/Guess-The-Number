@@ -154,11 +154,11 @@ $(".continue-button").click(function (event) {
           row +=
             '<td><a href="#" class="game-link" onclick="continueGame(' +
             gameID +
-            ')">' +
-            gameID +
-            "</a></td>";
+            ')">';
+          row += gameID + "</a></td>";
           row += "</tr>";
           $("#continue-rows").append(row);
+          $("#game-id").text("Game " + gameID);
         }
       });
     },
@@ -173,7 +173,21 @@ $("#back-button-four").click(function (event) {
   $("#main-page").show();
 });
 
+function getGameID() {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:8080/api/game",
+    success: function (gameIDArray) {
+      $.each(gameIDArray, function (index, game) {
+        let gameID = game.gameID;
+      });
+    },
+  });
+}
+
+// create as function for just the round table.
 function continueGame(gameID) {
+  $("#game-id").text("Game " + gameID);
   $("#continue-page").hide();
   $("#back-button-four").hide();
   $("#guessing-game").show();
@@ -185,7 +199,8 @@ function continueGame(gameID) {
     url: "http://localhost:8080/api/rounds/" + gameID,
     success: function (roundArray) {
       $.each(roundArray, function (index, round) {
-        $("#game-id").text("Game " + round.gameID);
+        // need to fix this below
+
         let roundID = round.roundID;
         let guess = round.guess;
         let result = round.result;
@@ -215,6 +230,7 @@ $("#back-button-five").click(function (event) {
     $("#guess-error").hide();
     $("#guess-input").val("");
     $("#guess-rows").empty();
+    // $("#game-id").text("");
     $("#guessing-game").hide();
     $("#back-button-five").hide();
     $("#main-page").show();
@@ -262,9 +278,10 @@ $(".begin-button").click(function (event) {
   $("#main-page").hide();
   $("#guessing-game").show();
   $("#guess-rows").empty();
+  $("#back-button-five").show();
 
   $.ajax({
-    type: "POST", 
-    url: "http://localhost:8080/api/begin/"
-  })
+    type: "POST",
+    url: "http://localhost:8080/api/begin/",
+  });
 });
