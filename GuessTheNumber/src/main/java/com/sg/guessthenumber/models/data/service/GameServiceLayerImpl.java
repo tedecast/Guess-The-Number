@@ -78,7 +78,7 @@ public class GameServiceLayerImpl implements GameServiceLayer {
             if (game.getGameStatus().equalsIgnoreCase("FINISHED")) {
 
                 throw new FinishedGameException("This Game is now FINISHED. "
-                        + "Please Begin a New Game or choose a Game that is IN PROGRESS.");
+                        + "Please click the Back To Main button.");
             }
 
             if (guess.equalsIgnoreCase(answer)) {

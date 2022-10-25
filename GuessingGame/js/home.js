@@ -234,26 +234,26 @@ $("#clear-button").click(function (event) {
 });
 
 $("#enter-game-button").click(function (event) {
+  $("#guess-error").hide();
   $.ajax({
     type: "POST",
     url: "http://localhost:8080/api/guess/",
     data: JSON.stringify({
-      gameID: $("#game-id")
-      .text()
-      .split(" ")[1],
+      gameID: $("#game-id").text().split(" ")[1],
       guess: $("#guess-input").val(),
     }),
     contentType: "application/json",
     success: function () {
+      $("#guess-input").val("");
       $("#guess-error").empty();
       continueGame($("#game-id").text().split(" ")[1]);
     },
     error: function (result) {
-        guessError(result.responseJSON.message);
+      guessError(result.responseJSON.message);
     },
   });
 });
 
-function guessError(string){
-    $("#guess-error").text(string).attr({ class: "list-group-item list-group-item-danger text-center" });
+function guessError(string) {
+  $("#guess-error").text(string).show();
 }

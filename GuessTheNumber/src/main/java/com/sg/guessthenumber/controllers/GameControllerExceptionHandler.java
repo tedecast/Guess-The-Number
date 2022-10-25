@@ -26,7 +26,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 public class GameControllerExceptionHandler extends ResponseEntityExceptionHandler {
     
     private static final String MESSAGE = "ERROR: Please try again.";
-    private static final String MESSAGE2 = "ERROR: Please try again and enter a guess that consists of exactly 4 valid numbers.";
+    private static final String MESSAGE2 = "ERROR: Please try again and enter a guess of 4 valid numbers.";
 
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     public final ResponseEntity<Error> handleSqlException(
