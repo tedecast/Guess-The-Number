@@ -148,7 +148,7 @@ $(".continue-button").click(function (event) {
       $.each(continueArray, function (index, game) {
         let gameID = game.gameID;
         let gameStatus = game.gameStatus;
-        
+
         if (gameStatus == "IN PROGRESS") {
           let row = "<tr>";
           row +=
@@ -179,6 +179,7 @@ function continueGame(gameID) {
   $("#guessing-game").show();
   $("#guess-rows").empty();
   $("#back-button-five").show();
+
   $.ajax({
     type: "GET",
     url: "http://localhost:8080/api/rounds/" + gameID,
@@ -211,7 +212,8 @@ function continueGame(gameID) {
 $("#back-button-five").click(function (event) {
   let confirm = window.confirm("Are you sure you want to exit this game?");
   if (confirm == true) {
-    $("#guessEror").empty();
+    $("#guess-error").hide();
+    $("#guess-input").val("");
     $("#guess-rows").empty();
     $("#guessing-game").hide();
     $("#back-button-five").hide();
@@ -255,3 +257,14 @@ $("#enter-game-button").click(function (event) {
 function guessError(string) {
   $("#guess-error").text(string).show();
 }
+
+$(".begin-button").click(function (event) {
+  $("#main-page").hide();
+  $("#guessing-game").show();
+  $("#guess-rows").empty();
+
+  $.ajax({
+    type: "POST", 
+    url: "http://localhost:8080/api/begin/"
+  })
+});
