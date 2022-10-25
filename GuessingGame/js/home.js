@@ -1,4 +1,6 @@
-$(document).ready(function () {});
+//$(document).ready(function () {});
+
+var errorString = "Error calling web service. Please try again later.";
 
 $(".rules-button").click(function (event) {
   $("#error-messages").empty();
@@ -274,11 +276,15 @@ $(".begin-button").click(function (event) {
         url: "http://localhost:8080/api/game",
         success: function (gameIDArray) {
           $.each(gameIDArray, function (index, game) {
-            let gameID = game.gameID;
-            $("#game-id").text("Game " + gameID[gameID.length - 1]);
-            console.log(gameID[gameID.length - 1]);
-            console.log(gameIDArray[gameIDArray.length - 1]);
+            $("#game-id").text("Game " + game.gameID);
           });
+        },
+        error: function () {
+          $("#error-messages").append(
+            $("<li>")
+              .attr({ class: "list-group-item list-group-item-danger" })
+              .text(errorString)
+          );
         },
       });
     },
