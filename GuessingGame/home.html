@@ -156,11 +156,11 @@
             <hr>
             <ul class="list-group text-center mb-3" id="guess-error"></ul>
 
-            <input type="text" id="guess-input" class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold">
+            <input type="text" id="guess-input"
+                class="form-control border-info col-3 p-5 mb-2 text-center font-weight-bold">
 
             <div>
-                <button class="num btn-outline-info btn-lg"
-                    id="zero">0</button>
+                <button type="button" class="num btn-outline-info btn-lg" id="zero">0</button>
                 <button type="button" onclick="dis('1')" onkeydown="numFunction(event)"
                     class="num btn-outline-info btn-lg" id="one">1</button>
                 <button type="button" onclick="dis('2')" onkeydown="numFunction(event)"
@@ -190,7 +190,8 @@
                     class="num btn-outline-info btn-lg">9</button>
                 <button type="button" class="btn btn-danger btn-lg mt-2 mr-3" type="button"
                     id="clear-button">Clear</button>
-                <button type="button" class="btn btn-info btn-lg mt-2" type="button" id="enter-game-button">Enter</button>
+                <button type="button" class="btn btn-info btn-lg mt-2" type="button"
+                    id="enter-game-button">Enter</button>
             </div>
             <table id="guess-table" class="table table-bordered">
                 <thead>
@@ -203,7 +204,8 @@
                 <tbody id="guess-rows">
                     <!-- Guess Contents Go Here -->
                 </tbody>
-                <button class="back btn btn-danger btn-lg mt-3" type="button" id="back-button-five">Back To Main</button>
+                <button class="back btn btn-danger btn-lg mt-3" type="button" id="back-button-five">Back To
+                    Main</button>
         </div>
 
     </div>
