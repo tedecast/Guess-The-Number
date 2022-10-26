@@ -90,10 +90,10 @@ $("#enter-button").click(function (event) {
 
             $("#game-id-header").text("Game " + gameID);
             let row = "<tr>";
-            row += "<td>" + roundID + "</td>";
-            row += "<td>" + guess + "</td>";
+            row += "<td class='num-font'>" + roundID + "</td>";
+            row += "<td class='num-font'>" + guess + "</td>";
             row += "<td>" + result + "</td>";
-            row += "<td>" + guessTime + "</td>";
+            row += "<td class='num-font'>" + guessTime + "</td>";
             row += "</tr>";
 
             roundContents.append(row);
@@ -206,8 +206,8 @@ function continueGame(gameID) {
         result = formatResult(result);
 
         let row = "<tr>";
-        row += "<td>" + roundID + "</td>";
-        row += "<td>" + guess + "</td>";
+        row += "<td class='num-font'>" + roundID + "</td>";
+        row += "<td class='num-font'>" + guess + "</td>";
         row += "<td>" + result + "</td>";
         row += "</tr>";
 
