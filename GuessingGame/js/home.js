@@ -31,9 +31,9 @@ $(".previous-button").click(function (event) {
         let gameStatus = game.gameStatus;
 
         let row = "<tr>";
-        row += "<td>" + gameID + "</td>";
-        row += "<td>" + winningNumbers + "</td>";
-        row += "<td>" + gameStatus + "</td>";
+        row += "<td class='num-font'>" + gameID + "</td>";
+        row += "<td class='num-font'>" + winningNumbers + "</td>";
+        row += "<td class='text-center'>" + gameStatus + "</td>";
         row += "</tr>";
 
         previousRows.append(row);
@@ -85,6 +85,8 @@ $("#enter-button").click(function (event) {
             let result = round.result;
             let guessTime = round.guessTime;
             let gameID = round.gameID;
+
+            result = formatResult(result);
 
             $("#game-id-header").text("Game " + gameID);
             let row = "<tr>";
@@ -173,7 +175,13 @@ $("#back-button-four").click(function (event) {
   $("#main-page").show();
 });
 
-// create as function for just the round table.
+function formatResult(result){
+    let resultSplit = result.split(":");
+    resultSplit[0] = "Exact:";
+    resultSplit[2] = "Partial:";
+
+    return resultSplit.join(" ");
+}
 function continueGame(gameID) {
   $("#game-id").text("Game " + gameID);
   $("#continue-page").hide();
@@ -190,6 +198,12 @@ function continueGame(gameID) {
         let roundID = round.roundID;
         let guess = round.guess;
         let result = round.result;
+
+        if (result == "e:4:p:0") {
+          alert(`CONGRATULATIONS! You win! The answer was ${guess}!`);
+        }
+
+        result = formatResult(result);
 
         let row = "<tr>";
         row += "<td>" + roundID + "</td>";
