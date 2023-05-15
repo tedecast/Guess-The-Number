@@ -20,3 +20,8 @@ ALTER TABLE Round
 	ADD CONSTRAINT FK_RoundGame
     FOREIGN KEY FK_RoundGame (GameID)
     REFERENCES Game (GameID);   
+
+
+USE GuessTheNumberDB; 
+Select * from game;
+Select * from round; 
